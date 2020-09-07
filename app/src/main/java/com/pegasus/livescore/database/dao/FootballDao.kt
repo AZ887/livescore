@@ -12,6 +12,9 @@ interface FootballDao{
     @Query("SELECT * FROM footballmatch")
     fun getAllItems(): LiveData<List<FootballMatch>>
 
+    @Query("SELECT * FROM footballmatch Order by matchTime")
+    fun getAllItemsByDate(): LiveData<List<FootballMatch>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllItems(items:List<FootballMatch>)
 

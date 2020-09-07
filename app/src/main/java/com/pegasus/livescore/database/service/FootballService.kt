@@ -9,4 +9,7 @@ interface FootballService {
     suspend fun getFootballScore(
     ): Response<FootballScoreModel>
 
+    @GET("zqbf-list-event/")
+    suspend fun getFootballEvent(
+    ): Response<FootballScoreModel>
 }

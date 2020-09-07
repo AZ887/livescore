@@ -10,14 +10,8 @@ class FootballRepository @Inject constructor(
     private val localDataSource: FootballDao
 ) {
 
-//    fun getCharacter(id: Int) = performGetOperation(
-//        databaseQuery = { localDataSource.getCharacter(id) },
-//        networkCall = { remoteDataSource.getCharacter(id) },
-//        saveCallResult = { localDataSource.insert(it) }
-//    )
-
     fun getFootballScore() = performGetOperation(
-        databaseQuery = { localDataSource.getAllItems() },
+        databaseQuery = { localDataSource.getAllItemsByDate() },
         networkCall = { remoteDataSource.getFootballMatch() },
         saveCallResult = { localDataSource.insertAllItems(it.matchList) }
     )

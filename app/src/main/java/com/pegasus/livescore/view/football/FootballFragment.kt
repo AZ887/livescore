@@ -5,13 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pegasus.livescore.R
 import com.pegasus.livescore.database.entitymodel.FootballMatch
 import com.pegasus.livescore.databinding.FragmentFootballBinding
 import com.pegasus.livescore.util.Resource
@@ -22,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FootballFragment : Fragment(), FootballScoreAdapter.FootballScoreItemListener {
 
     private var binding: FragmentFootballBinding by autoCleared()
-    private val viewModel: CharactersViewModel by viewModels()
+    private val viewModel: FootballViewModel by viewModels()
     private lateinit var adapter: FootballScoreAdapter
 
     override fun onCreateView(
