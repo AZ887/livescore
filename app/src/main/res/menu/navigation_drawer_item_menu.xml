@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="sport">
+        <menu>
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_Soccer"
+            android:icon="@drawable/ic_soccer"
+            android:title="@string/menu_soccer" />
+        <item
+            android:id="@+id/nav_basketball"
+            android:icon="@drawable/ic_basketball"
+            android:title="@string/menu_basket_ball" />
+
+    </group>
+        </menu>
+    </item>
+    <item android:title="news">
+        <menu>
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_latest_news"
+            android:icon="@drawable/ic_newspaper_grey600_24dp"
+            android:title="@string/menu_latest_news" />
+
+    </group>
+        </menu>
+    </item>
+</menu>
