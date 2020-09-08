@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.pegasus.livescore.database.entitymodel.FootballMatch
 import com.pegasus.livescore.databinding.FragmentFootballBinding
 import com.pegasus.livescore.util.Resource
@@ -39,11 +40,17 @@ class FootballFragment : Fragment(), FootballScoreAdapter.FootballScoreItemListe
     private fun setupRecyclerView() {
         adapter = FootballScoreAdapter(this)
         binding.rvFragmentFootball.layoutManager = LinearLayoutManager(requireContext())
+//        binding.rvFragmentFootball.layoutManager = object : LinearLayoutManager(requireContext()) {
+//            override fun checkLayoutParams(lp: RecyclerView.LayoutParams): Boolean {
+//                lp.height = height / 4
+//                return true
+//            }
+//        }
         binding.rvFragmentFootball.adapter = adapter
     }
 
     private fun setupObservers() {
-        viewModel.characters.observe(viewLifecycleOwner, Observer {
+        viewModel.footballScoreList.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
 //                    binding.progressBar.visibility = View.GONE

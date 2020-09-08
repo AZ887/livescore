@@ -1,16 +1,17 @@
 package com.pegasus.livescore.view.football
 
-import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.pegasus.livescore.database.entitymodel.FootballMatch
 import com.pegasus.livescore.databinding.FootballViewholderBinding
-import kotlinx.android.synthetic.main.common_vh_item_team_logo.view.*
-import kotlinx.android.synthetic.main.football_viewholder.view.*
+import com.pegasus.livescore.util.DateTimeUtil
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class FootballScoreAdapter(private val listener: FootballScoreItemListener) : RecyclerView.Adapter<FootballScoreViewHolder>() {
 
@@ -45,9 +46,12 @@ class FootballScoreViewHolder(private val itemBinding: FootballViewholderBinding
         itemBinding.root.setOnClickListener(this)
     }
 
-    @SuppressLint("SetTextI18n")
     fun bind(item: FootballMatch) {
         this.footballMatch = item
+
+        val date = DateTimeUtil.stringToDateConverter(item.matchTime)
+        itemBinding.layoutHeader.llHeader.setBackgroundColor(Color.parseColor(item?.color))
+        itemBinding.layoutHeader.tvHeaderDetail.text = SimpleDateFormat("HH:mm:ss", Locale.ENGLISH).format(date)
 
         Glide.with(itemBinding.root)
             .load(item.homeLogo)

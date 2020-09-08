@@ -3,17 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/border"
+    >
+
+    <include
+        android:id="@+id/layout_header"
+        layout="@layout/common_vh_item_match_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintDimensionRatio="h,4:2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <include
         android:id="@+id/layout_team_1"
         layout="@layout/common_vh_item_team_logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintDimensionRatio="h,4:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintDimensionRatio="h,2:1"/>
+        app:layout_constraintTop_toBottomOf="@+id/layout_header"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"/>
 
     <include
         android:id="@+id/layout_team_2"
@@ -21,10 +38,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,4:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_team_1"
-        app:layout_constraintDimensionRatio="h,2:1"/>
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

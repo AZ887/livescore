@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.pegasus.livescore.R
@@ -16,6 +17,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.content_main.*
 
 
 @AndroidEntryPoint
@@ -26,12 +28,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var toolbarSpinner: Spinner
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_home)
 
         navController = findNavController(R.id.main_nav_host) //Initialising navController
 
         appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.nav_live, R.id.nav_all, R.id.nav_latest_news
+            R.id.nav_live, R.id.nav_all,R.id.nav_football
         ) //Pass the ids of fragments from nav_graph which you d'ont want to show back button in toolbar
             .setOpenableLayout(main_drawer_layout) //Pass the drawer layout id from activity xml
             .build()
@@ -46,6 +49,24 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar) //Set toolbar
 
         setupNavControl()
+        setupActionBarWithNavController(
+            navController,
+            appBarConfiguration
+        ) //Setup toolbar with back button and drawer icon according to appBarConfiguration
+
+        val navHostFragment = main_nav_host as NavHostFragment
+        val inflater = navHostFragment.navController.navInflater
+        val graph = inflater.inflate(R.navigation.mobile_navigation)
+        graph.startDestination = R.id.nav_football
+
+        navHostFragment.navController.graph = graph
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.nav_live-> navController.navigate(R.id.nav_football)
+            }
+        }
+
     }
 
     private fun setupNavControl() {
@@ -54,19 +75,12 @@ class MainActivity : AppCompatActivity() {
 
 //        main_navigation_view?.setNavigationItemSelectedListener { menuItem ->
 //            supportActionBar?.title = menuItem.title
+//            menuItem.isChecked = true
 //            main_drawer_layout.closeDrawers()
 //            true
 //        }
 //
-        setupActionBarWithNavController(
-            navController,
-            appBarConfiguration
-        ) //Setup toolbar with back button and drawer icon according to appBarConfiguration
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
 
-            }
-        }
     }
 
     fun exitApp() { //To exit the application call this function from fragment
