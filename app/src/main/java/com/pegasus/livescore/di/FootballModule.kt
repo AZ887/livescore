@@ -1,7 +1,7 @@
 package com.pegasus.livescore.di
 
 import com.pegasus.livescore.database.datasource.AppDatabase
-import com.pegasus.livescore.database.datasource.FootballDataSource
+import com.pegasus.livescore.database.datasource.football.FootballDataSource
 import com.pegasus.livescore.database.repository.FootballRepository
 import com.pegasus.livescore.database.service.FootballService
 import com.pegasus.sport.data.dao.FootballDao

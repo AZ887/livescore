@@ -1,8 +1,7 @@
-package com.pegasus.livescore.database.entitymodel
+package com.pegasus.livescore.database.entitymodel.football
 
 import androidx.room.Embedded
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 data class FootballEventModel (

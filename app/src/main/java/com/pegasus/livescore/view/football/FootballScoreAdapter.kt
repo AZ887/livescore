@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.pegasus.livescore.database.entitymodel.FootballMatch
+import com.pegasus.livescore.database.entitymodel.football.FootballMatch
 import com.pegasus.livescore.databinding.FootballViewholderBinding
 import com.pegasus.livescore.util.DateTimeUtil
 import java.text.SimpleDateFormat

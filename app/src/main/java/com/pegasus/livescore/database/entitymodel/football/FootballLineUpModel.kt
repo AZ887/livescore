@@ -1,4 +1,4 @@
-package com.pegasus.livescore.database.entitymodel
+package com.pegasus.livescore.database.entitymodel.football
 
 import androidx.room.Embedded
 import androidx.room.Entity

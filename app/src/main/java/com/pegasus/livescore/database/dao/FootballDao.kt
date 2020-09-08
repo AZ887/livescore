@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.pegasus.livescore.database.entitymodel.FootballMatch
+import com.pegasus.livescore.database.entitymodel.football.FootballMatch
 
 @Dao
 interface FootballDao{
