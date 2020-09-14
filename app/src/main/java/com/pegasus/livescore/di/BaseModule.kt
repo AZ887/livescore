@@ -7,6 +7,7 @@ import com.pegasus.livescore.database.datasource.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.Interceptor
@@ -29,7 +30,7 @@ object BaseModule {
     @Singleton
     @Provides
     fun provideRetrofit(gson: Gson) : Retrofit = Retrofit.Builder()
-        .baseUrl("https://77577.com/api/")
+        .baseUrl("https://www.77577.com/api/")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(createOkHttpClient())
 //        .client(OkHttpClient.Builder()
@@ -67,7 +68,7 @@ private fun createOkHttpClient(): OkHttpClient {
             .sslSocketFactory(sslContext.getSocketFactory(),MyManager())
             .addInterceptor(logging)
             .addNetworkInterceptor(CustomInterceptor())
-            .hostnameVerifier { hostname: String?, session: SSLSession? -> true }
+            .hostnameVerifier { _: String?, _: SSLSession? -> true }
             .build()
     } catch (e: Exception) {
         throw RuntimeException(e)

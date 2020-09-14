@@ -4,11 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:id="@+id/ll_header">
+        android:id="@+id/ll_header"
+    android:background="@color/color_black">
+    <TextView
+        android:id="@+id/tv_header_league"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/color_white"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"/>
     <TextView
         android:id="@+id/tv_header_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColor="@color/color_white"
-        />
+        android:textAlignment="textEnd"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"/>
 </LinearLayout>

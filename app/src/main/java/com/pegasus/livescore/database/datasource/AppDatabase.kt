@@ -7,9 +7,9 @@ import androidx.room.RoomDatabase
 import com.pegasus.livescore.database.dao.BasketballDao
 import com.pegasus.livescore.database.entitymodel.basketball.BasketballMatch
 import com.pegasus.livescore.database.entitymodel.football.FootballMatch
-import com.pegasus.sport.data.dao.FootballDao
+import com.pegasus.livescore.database.dao.FootballDao
 
-@Database(entities = [FootballMatch::class, BasketballMatch::class], version = 2, exportSchema = false)
+@Database(entities = [FootballMatch::class, BasketballMatch::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun footballDao(): FootballDao
     abstract fun basketballDao(): BasketballDao

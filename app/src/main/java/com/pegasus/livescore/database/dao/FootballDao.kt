@@ -1,4 +1,4 @@
-package com.pegasus.sport.data.dao
+package com.pegasus.livescore.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

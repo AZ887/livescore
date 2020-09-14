@@ -53,7 +53,10 @@ class FootballFragment : Fragment(), FootballScoreAdapter.FootballScoreItemListe
             when (it.status) {
                 Resource.Status.SUCCESS -> {
 //                    binding.progressBar.visibility = View.GONE
-                    if (!it.data.isNullOrEmpty()) adapter.setItems(ArrayList(it.data))
+                    if (!it.data.isNullOrEmpty()){
+
+                        adapter.setItems(ArrayList(it.data))
+                    }
                 }
                 Resource.Status.ERROR ->
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
@@ -67,7 +70,7 @@ class FootballFragment : Fragment(), FootballScoreAdapter.FootballScoreItemListe
 
     override fun onClickViewHolder(item: FootballMatch) {
         TODO("Not yet implemented")
-        //        findNavController().navigate(
+//        findNavController().navigate(
 //            R.id.action_charactersFragment_to_characterDetailFragment,
 //            bundleOf("id" to characterId)
 //        )

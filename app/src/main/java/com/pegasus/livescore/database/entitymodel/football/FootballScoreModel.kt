@@ -101,4 +101,3 @@ data class FootballMatch (
 
     val groupId: Long? = null
 )
-

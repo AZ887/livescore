@@ -10,6 +10,15 @@
     >
 
     <include
+        android:id="@+id/layout_section_header"
+        layout="@layout/common_vh_item_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
         android:id="@+id/layout_header"
         layout="@layout/common_vh_item_match_detail"
         android:layout_width="match_parent"
@@ -17,7 +26,7 @@
         app:layout_constraintDimensionRatio="h,4:2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_section_header"
         />
 
     <include
@@ -29,8 +38,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_header"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"/>
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"/>
 
     <include
         android:id="@+id/layout_team_2"
@@ -42,8 +51,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_team_1"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"/>
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

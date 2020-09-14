@@ -7,6 +7,5 @@ import com.pegasus.livescore.database.repository.FootballRepository
 class FootballViewModel @ViewModelInject constructor(
     repository: FootballRepository
 ) : ViewModel() {
-
     val footballScoreList = repository.getFootballScore()
 }

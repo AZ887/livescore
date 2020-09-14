@@ -4,7 +4,7 @@ import com.pegasus.livescore.database.datasource.AppDatabase
 import com.pegasus.livescore.database.datasource.football.FootballDataSource
 import com.pegasus.livescore.database.repository.FootballRepository
 import com.pegasus.livescore.database.service.FootballService
-import com.pegasus.sport.data.dao.FootballDao
+import com.pegasus.livescore.database.dao.FootballDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,6 +27,5 @@ object FootballModule {
 
     @Provides
     fun provideRepository(remoteDataSource: FootballDataSource,
-                          localDataSource: FootballDao) =
-        FootballRepository(remoteDataSource, localDataSource)
+                          localDataSource: FootballDao) = FootballRepository(remoteDataSource, localDataSource)
 }

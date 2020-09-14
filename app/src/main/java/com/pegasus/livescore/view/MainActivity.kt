@@ -17,8 +17,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.content_main.*
-
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -26,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
     private lateinit var toolbarSpinner: Spinner
+    private var currentSport = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.main_nav_host) //Initialising navController
 
         appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.nav_live, R.id.nav_all,R.id.nav_football
+            R.id.nav_live, R.id.nav_all, R.id.nav_football, R.id.nav_basketball
         ) //Pass the ids of fragments from nav_graph which you d'ont want to show back button in toolbar
             .setOpenableLayout(main_drawer_layout) //Pass the drawer layout id from activity xml
             .build()
@@ -43,9 +42,10 @@ class MainActivity : AppCompatActivity() {
         toolbarSpinner = findViewById(R.id.toolbar_spinner)
         toolbarSpinner.adapter = ArrayAdapter(
             this,
-            android.R.layout.simple_spinner_item,
+            R.layout.spinner_item_textview,
             resources.getStringArray(R.array.Sport)
         )
+
         setSupportActionBar(toolbar) //Set toolbar
 
         setupNavControl()
@@ -63,7 +63,29 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.nav_live-> navController.navigate(R.id.nav_football)
+                R.id.nav_live -> {
+                    when (currentSport) {
+                        0 -> {
+                            supportActionBar?.title = "Football"
+                            navController.navigate(R.id.nav_football)
+
+                        }
+                        1 -> {
+                            supportActionBar?.title = "basketball"
+                            navController.navigate(R.id.nav_basketball)
+
+                        }
+                    }
+                }
+                R.id.nav_football -> {
+                    currentSport = 0
+                    supportActionBar?.title = "Football"
+                }
+                R.id.nav_basketball -> {
+                    currentSport = 1
+                    supportActionBar?.title = "Basketball"
+                }
+
             }
         }
 

@@ -10,15 +10,20 @@
         android:id="@+id/nav_live"
         android:name="com.pegasus.livescore.view.LiveFragment"
         android:label="@string/menu_latest_news"
-        tools:layout="@layout/fragment_football" />
+        tools:layout="@layout/fragment_live" />
     <fragment
         android:id="@+id/nav_all"
         android:name="com.pegasus.livescore.view.AllFragment"
         android:label="@string/menu_all"
-        tools:layout="@layout/fragment_live" />
+        tools:layout="@layout/fragment_all" />
     <fragment
         android:id="@+id/nav_football"
         android:name="com.pegasus.livescore.view.football.FootballFragment"
         android:label="@string/menu_all"
-        tools:layout="@layout/fragment_live" />
+        tools:layout="@layout/fragment_football" />
+    <fragment
+        android:id="@+id/nav_basketball"
+        android:name="com.pegasus.livescore.view.basketball.BasketballFragment"
+        android:label="@string/menu_all"
+        tools:layout="@layout/fragment_basketball" />
 </navigation>
