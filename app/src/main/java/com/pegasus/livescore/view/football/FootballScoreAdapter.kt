@@ -39,7 +39,7 @@ class FootballScoreAdapter(private val listener: FootballScoreItemListener) : Re
 
     override fun onBindViewHolder(holder: FootballScoreViewHolder, position: Int) = holder.bind(items[position], checkIsHeader(items[position].matchTime))
 
-    fun checkIsHeader(datestring: String?): Boolean{
+    private fun checkIsHeader(datestring: String?): Boolean{
         val date =  DateTimeUtil.stringToDateConverter(datestring)
         if(date?.get(Calendar.DAY_OF_YEAR)!=headerDay){
             headerDay = date?.get(Calendar.DAY_OF_YEAR)!!
@@ -65,10 +65,9 @@ class FootballScoreViewHolder(private val itemBinding: FootballViewholderBinding
         itemBinding.layoutSectionHeader.llHeader.visibility = if(isHeader || this.adapterPosition == 0) View.VISIBLE else View.GONE
         itemBinding.layoutSectionHeader.tvSectionHeader.text = SimpleDateFormat("yyyy/MM/dd").format(date?.time).toString()
 
-        itemBinding.layoutHeader.llHeader.setBackgroundColor(Color.parseColor(item?.color))
+        itemBinding.layoutHeader.llHeader.setBackgroundColor(Color.parseColor(item.color))
         itemBinding.layoutHeader.tvHeaderLeague.text = item.leagueEn
         itemBinding.layoutHeader.tvHeaderDetail.text = SimpleDateFormat("HH:mm").format(date?.time).toString()
-
 
         Glide.with(itemBinding.root)
             .load(item.homeLogo)

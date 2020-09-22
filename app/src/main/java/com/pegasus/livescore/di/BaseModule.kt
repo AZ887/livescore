@@ -29,10 +29,10 @@ object BaseModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(gson: Gson) : Retrofit = Retrofit.Builder()
+    fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient) : Retrofit = Retrofit.Builder()
         .baseUrl("https://www.77577.com/api/")
         .addConverterFactory(GsonConverterFactory.create(gson))
-        .client(createOkHttpClient())
+        .client(okHttpClient)
 //        .client(OkHttpClient.Builder()
 //            .addInterceptor(CustomInterceptor())
 //            .addNetworkInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.HEADERS })
@@ -41,6 +41,10 @@ object BaseModule {
 
     @Provides
     fun provideGson(): Gson = GsonBuilder().create()
+
+    @Singleton
+    @Provides
+    fun provideOkHttp() : OkHttpClient = createOkHttpClient()
 
     @Provides
     @Singleton
@@ -65,7 +69,7 @@ private fun createOkHttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         OkHttpClient.Builder()
-            .sslSocketFactory(sslContext.getSocketFactory(),MyManager())
+            .sslSocketFactory(sslContext.socketFactory,MyManager())
             .addInterceptor(logging)
             .addNetworkInterceptor(CustomInterceptor())
             .hostnameVerifier { _: String?, _: SSLSession? -> true }
