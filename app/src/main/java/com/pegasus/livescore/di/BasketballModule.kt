@@ -17,10 +17,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 object BasketballModule {
+    @Singleton
     @Provides
     fun provideBasketballService(retrofit: Retrofit): BasketballService = retrofit.create(
         BasketballService::class.java)
 
+    @Singleton
     @Provides
     fun provideBasketballRemoteDataSource(BasketballService: BasketballService) = BasketballDataSource(BasketballService)
 
@@ -28,9 +30,9 @@ object BasketballModule {
     @Provides
     fun provideBasketballDao(db: AppDatabase) = db.basketballDao()
 
+    @Singleton
     @Provides
     fun provideRepository(remoteDataSource: BasketballDataSource,
                           localDataSource: BasketballDao
-    ) =
-        BasketballRepository(remoteDataSource, localDataSource)
+    ) = BasketballRepository(remoteDataSource, localDataSource)
 }

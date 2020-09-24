@@ -33,18 +33,15 @@ object BaseModule {
         .baseUrl("https://www.77577.com/api/")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(okHttpClient)
-//        .client(OkHttpClient.Builder()
-//            .addInterceptor(CustomInterceptor())
-//            .addNetworkInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.HEADERS })
-//            .build())
         .build()
 
+    @Singleton
     @Provides
     fun provideGson(): Gson = GsonBuilder().create()
 
     @Singleton
     @Provides
-    fun provideOkHttp() : OkHttpClient = createOkHttpClient()
+    fun provideOkHttpClient() : OkHttpClient = createOkHttpClient()
 
     @Provides
     @Singleton
