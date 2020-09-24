@@ -10,22 +10,22 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pegasus.livescore.database.entitymodel.basketball.BasketballMatch
-import com.pegasus.livescore.databinding.FragmentBasketballBinding
+import com.pegasus.livescore.databinding.FragmentBasketballHistoryBinding
 import com.pegasus.livescore.util.Resource
 import com.pegasus.livescore.util.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
-class BasketballFragment : Fragment(), BasketballScoreAdapter.BasketballScoreItemListener {
+class BasketballHistoryFragment : Fragment(), BasketballHistoryAdapter.BasketballHistoryItemListener {
 
-    private var binding: FragmentBasketballBinding by autoCleared()
-    private val viewModel: BasketballViewModel by viewModels()
-    private lateinit var adapter: BasketballScoreAdapter
+    private var binding: FragmentBasketballHistoryBinding by autoCleared()
+    private val viewModel: BasketballHistoryViewModel by viewModels()
+    private lateinit var adapter: BasketballHistoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentBasketballBinding.inflate(inflater, container, false)
+        binding = FragmentBasketballHistoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,15 +36,15 @@ class BasketballFragment : Fragment(), BasketballScoreAdapter.BasketballScoreIte
     }
 
     private fun setupRecyclerView() {
-        adapter = BasketballScoreAdapter(this)
-        binding.rvFragmentFootball.layoutManager = LinearLayoutManager(requireContext())
+        adapter = BasketballHistoryAdapter(this)
+        binding.rvFragmentBasketballHistory.layoutManager = LinearLayoutManager(requireContext())
 //        binding.rvFragmentBasketball.layoutManager = object : LinearLayoutManager(requireContext()) {
 //            override fun checkLayoutParams(lp: RecyclerView.LayoutParams): Boolean {
 //                lp.height = height / 4
 //                return true
 //            }
 //        }
-        binding.rvFragmentFootball.adapter = adapter
+        binding.rvFragmentBasketballHistory.adapter = adapter
     }
 
     private fun setupObservers() {

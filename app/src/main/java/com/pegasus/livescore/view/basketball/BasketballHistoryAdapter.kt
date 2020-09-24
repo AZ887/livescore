@@ -15,9 +15,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class BasketballScoreAdapter(private val listener: BasketballScoreItemListener) : RecyclerView.Adapter<BasketballScoreViewHolder>() {
+class BasketballHistoryAdapter(private val listener: BasketballHistoryItemListener) : RecyclerView.Adapter<BasketballHistoryViewHolder>() {
 
-    interface BasketballScoreItemListener {
+    interface BasketballHistoryItemListener {
         fun onClickViewHolder(item: BasketballMatch)
     }
 
@@ -30,15 +30,15 @@ class BasketballScoreAdapter(private val listener: BasketballScoreItemListener) 
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasketballScoreViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasketballHistoryViewHolder {
         val binding: BasketballViewholderBinding = BasketballViewholderBinding.inflate(
             LayoutInflater.from(parent.context), parent, false)
-        return BasketballScoreViewHolder(binding, listener)
+        return BasketballHistoryViewHolder(binding, listener)
     }
 
     override fun getItemCount(): Int = items.size
 
-    override fun onBindViewHolder(holder: BasketballScoreViewHolder, position: Int) = holder.bind(items[position], checkIsHeader(items[position].matchTime))
+    override fun onBindViewHolder(holder: BasketballHistoryViewHolder, position: Int) = holder.bind(items[position], checkIsHeader(items[position].matchTime))
 
     fun checkIsHeader(datestring: String?): Boolean{
         val date =  DateTimeUtil.stringToDateConverter(datestring)
@@ -50,7 +50,7 @@ class BasketballScoreAdapter(private val listener: BasketballScoreItemListener) 
     }
 }
 
-class BasketballScoreViewHolder(private val itemBinding: BasketballViewholderBinding, private val listener: BasketballScoreAdapter.BasketballScoreItemListener) : RecyclerView.ViewHolder(itemBinding.root),
+class BasketballHistoryViewHolder(private val itemBinding: BasketballViewholderBinding, private val listener: BasketballHistoryAdapter.BasketballHistoryItemListener) : RecyclerView.ViewHolder(itemBinding.root),
     View.OnClickListener {
 
     private lateinit var basketballMatch: BasketballMatch

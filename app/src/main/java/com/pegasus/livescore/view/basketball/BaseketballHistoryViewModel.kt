@@ -4,7 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import com.pegasus.livescore.database.repository.BasketballRepository
 
-class BasketballViewModel @ViewModelInject constructor(
+class BasketballHistoryViewModel @ViewModelInject constructor(
     repository: BasketballRepository
 ) : ViewModel() {
 
