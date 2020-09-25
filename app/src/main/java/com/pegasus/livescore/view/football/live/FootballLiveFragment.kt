@@ -33,8 +33,8 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        setupRecyclerView()
-//        setupObservers()
+        setupRecyclerView()
+        setupObservers()
 //        var request: Request = Request.Builder().url("wss://www.77577.com:6001/app/AABBCCDD?protocol=7&client=js&version=5.1.1&flash=false").build()
 //        var webSocketListener: WebSocketListener = object : WebSocketListener() {
 //            override fun onOpen(webSocket: WebSocket, response: Response) {

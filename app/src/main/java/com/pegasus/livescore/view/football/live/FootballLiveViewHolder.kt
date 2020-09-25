@@ -3,9 +3,9 @@ package com.pegasus.livescore.view.football.live
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.pegasus.livescore.database.entitymodel.football.FootballMatch
-import com.pegasus.livescore.databinding.FootballViewholderBinding
+import com.pegasus.livescore.databinding.FootballLiveViewholderBinding
 
-class FootballLiveViewHolder(private val itemBinding: FootballViewholderBinding, private val listener: FootballLiveAdapter.FootballLiveItemListener) : RecyclerView.ViewHolder(itemBinding.root),
+class FootballLiveViewHolder(private val itemBinding: FootballLiveViewholderBinding, private val listener: FootballLiveAdapter.FootballLiveItemListener) : RecyclerView.ViewHolder(itemBinding.root),
     View.OnClickListener {
 
     private lateinit var footballMatch: FootballMatch

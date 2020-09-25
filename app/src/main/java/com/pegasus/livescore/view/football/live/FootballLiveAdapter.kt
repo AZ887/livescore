@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pegasus.livescore.database.entitymodel.football.FootballMatch
-import com.pegasus.livescore.databinding.FootballViewholderBinding
+import com.pegasus.livescore.databinding.FootballLiveViewholderBinding
 import com.pegasus.livescore.util.DateTimeUtil
 import java.util.*
 import kotlin.collections.ArrayList
@@ -25,7 +25,7 @@ class FootballLiveAdapter(private val listener: FootballLiveItemListener) : Recy
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FootballLiveViewHolder {
-        val binding: FootballViewholderBinding = FootballViewholderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding: FootballLiveViewholderBinding = FootballLiveViewholderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FootballLiveViewHolder(binding, listener)
     }
 
