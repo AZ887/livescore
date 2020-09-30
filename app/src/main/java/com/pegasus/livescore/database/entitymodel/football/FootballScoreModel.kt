@@ -1,52 +1,64 @@
 package com.pegasus.livescore.database.entitymodel.football
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+
+@Serializable
 data class FootballScoreModel (
-    val matchList: List<FootballMatch>
+    val matchList: List<FootballMatch>,
+    val todayHotLeague: List<TodayHotLeague>,
+    val todayHotLeagueList: List<FootballMatch>
 )
 
-@Entity(tableName = "footballmatch")
+@Serializable
 data class FootballMatch (
-    @PrimaryKey
-    val matchId: Long,
+    @SerialName("matchId")
+    val matchID: Long,
 
-    val color: String?,
+    val color: String,
     val kind: Long,
 
-    val leagueId: Long,
+    @SerialName("leagueId")
+    val leagueID: Long,
 
-    val leagueEn: String?,
-    val leagueEnShort: String?,
+    val leagueEn: String,
+    val leagueEnShort: String,
 
-    val leagueChsShort: String?,
+    @SerialName("leagueChsShort")
+    val leagueCHSShort: String,
 
-    val leagueChtShort: String?,
+    val leagueChtShort: String,
 
-    val subLeagueId: String?,
+    @SerialName("subLeagueId")
+    val subLeagueID: String,
 
-    val subLeagueEn: String?,
+    val subLeagueEn: String,
 
-    val subLeagueChs: String?,
+    @SerialName("subLeagueChs")
+    val subLeagueCHS: String,
 
-    val subLeagueCht: String?,
-    val matchTime: String?,
-    val startTime: String?,
-    val homeEn: String?,
+    val subLeagueCht: String,
+    val matchTime: String,
+    val startTime: String,
+    val homeEn: String,
 
-    val homeChs: String?,
+    @SerialName("homeChs")
+    val homeCHS: String,
 
-    val homeCht: String?,
-    val awayEn: String?,
+    val homeCht: String,
+    val awayEn: String,
 
-    val awayChs: String?,
+    @SerialName("awayChs")
+    val awayCHS: String,
 
-    val awayCht: String?,
+    val awayCht: String,
 
-    val homeId: Long,
+    @SerialName("homeId")
+    val homeID: Long,
 
-    val awayId: Long,
+    @SerialName("awayId")
+    val awayID: Long,
 
     val state: Long,
     val homeScore: Long,
@@ -59,45 +71,126 @@ data class FootballMatch (
     val awayYellow: Long,
     val homeCorner: Long,
     val awayCorner: Long,
-    val homeRankEn: String?,
+    val homeRankEn: String,
 
-    val homeRankCn: String?,
+    @SerialName("homeRankCn")
+    val homeRankCN: String,
 
-    val awayRankEn: String?,
+    val awayRankEn: String,
 
-    val awayRankCn: String?,
+    @SerialName("awayRankCn")
+    val awayRankCN: String,
 
     val isNeutral: Boolean,
-    val hasLineup: String?,
-    val season: String?,
-    val roundEn: String?,
+    val hasLineup: String,
+    val season: String,
+    val roundEn: String,
 
-    val roundCn: String?,
+    @SerialName("roundCn")
+    val roundCN: String,
 
-    val grouping: String?,
-    val locationEn: String?,
+    val grouping: String,
+    val locationEn: String,
 
-    val locationCn: String?,
+    @SerialName("locationCn")
+    val locationCN: String,
 
-    val weatherEn: String?,
+    val weatherEn: String,
 
-    val weatherCn: String?,
+    @SerialName("weatherCn")
+    val weatherCN: String,
 
-    val temp: String?,
-    val explainEn: String?,
+    val temp: String,
+    val explainEn: String,
 
-    val explainCn: String?,
+    @SerialName("explainCn")
+    val explainCN: String,
 
-    val extraExplain: String?,
+    val extraExplain: String,
     val isHidden: Boolean,
-    val homeLogo: String?,
-    val awayLogo: String?,
+    val homeLogo: String? = null,
+    val awayLogo: String? = null,
+    val havEvent: Boolean,
+    val havTech: Boolean,
     val havAnim: Boolean,
-    val animateURL: String?,
+    val animateURL: String,
     val havBriefing: Boolean,
-    val havBriefingEn: Boolean,
 
-    val havBriefingChs: Boolean? = null,
+    @SerialName("havBriefingChs")
+    val havBriefingCHS: Boolean,
 
-    val groupId: Long? = null
+    val havPlayerDetails: Boolean,
+    val havLineup: Boolean,
+    val havTextLive: Boolean,
+    val odds: Odds,
+    val leagueNameEn: String,
+
+    @SerialName("leagueNameId")
+    val leagueNameID: String,
+
+    @SerialName("leagueNameCn")
+    val leagueNameCN: String,
+
+    @SerialName("leagueIdShort")
+    val leagueIDShort: String,
+
+    val subLeagueNameEn: String,
+
+    @SerialName("subLeagueNameId")
+    val subLeagueNameID: String,
+
+    @SerialName("subLeagueNameCn")
+    val subLeagueNameCN: String,
+
+    val homeNameEn: String,
+
+    @SerialName("homeNameId")
+    val homeNameID: String,
+
+    @SerialName("homeNameCn")
+    val homeNameCN: String,
+
+    val awayNameEn: String,
+
+    @SerialName("awayNameId")
+    val awayNameID: String,
+
+    @SerialName("awayNameCn")
+    val awayNameCN: String,
+
+    @SerialName("homeRankId")
+    val homeRankID: String,
+
+    @SerialName("roundId")
+    val roundID: String,
+
+    @SerialName("locationId")
+    val locationID: String,
+
+    @SerialName("weatherId")
+    val weatherID: String,
+
+    @SerialName("explainId")
+    val explainID: String,
+
+    @SerialName("groupId")
+    val groupID: Long? = null
+)
+
+@Serializable
+data class Odds (
+    val handicap: List<String>? = null,
+    val handicapHalf: List<String>? = null,
+    val europeOdds: List<String>? = null,
+    val overUnder: List<String>? = null,
+    val overUnderHalf: List<String>? = null
+)
+
+@Serializable
+data class TodayHotLeague (
+    @SerialName("leagueId")
+    val leagueID: Long,
+
+    val leagueEn: String,
+    val leagueEnShort: String
 )
