@@ -52,6 +52,9 @@ class FootballLiveViewHolder(private val itemBinding: FootballLiveViewholderBind
             .placeholder(R.drawable.ic_football_default)
             .into(itemBinding.layoutRightTeamDetail.ivTeamLogo)
         itemBinding.layoutRightTeamDetail.tvTeamName.text = item.awayEn
+
+        itemBinding.layoutFootballPreScoreDetail.tvFootballCorner.text = "C : 1-6"
+        itemBinding.layoutFootballPreScoreDetail.tvFootballHt.text = "HT : 0-0"
     }
 
     override fun onClick(v: View?) {
