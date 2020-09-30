@@ -23,7 +23,7 @@
         tools:layout="@layout/fragment_football_history" />
     <fragment
         android:id="@+id/nav_basketball_history"
-        android:name="com.pegasus.livescore.view.basketball.BasketballHistoryFragment"
+        android:name="com.pegasus.livescore.view.basketball.score.BasketballHistoryFragment"
         android:label="@string/menu_history"
         tools:layout="@layout/fragment_basketball_history" />
     <fragment
@@ -31,4 +31,9 @@
         android:name="com.pegasus.livescore.view.football.live.FootballLiveFragment"
         android:label="@string/menu_history"
         tools:layout="@layout/fragment_football_live" />
+    <fragment
+        android:id="@+id/nav_basketball_live"
+        android:name="com.pegasus.livescore.view.basketball.live.BasketballLiveFragment"
+        android:label="@string/menu_history"
+        tools:layout="@layout/fragment_basketball_live" />
 </navigation>

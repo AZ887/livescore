@@ -1,22 +1,21 @@
-package com.pegasus.livescore.view.basketball
+package com.pegasus.livescore.view.basketball.live
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pegasus.livescore.database.entitymodel.basketball.BasketballScoreModel
-import com.pegasus.livescore.database.entitymodel.football.FootballScoreModel
 import com.pegasus.livescore.database.repository.BasketballRepository
 import com.pegasus.livescore.util.Resource
 import kotlinx.coroutines.launch
 
-class BasketballHistoryViewModel @ViewModelInject constructor(
+class BasketballLiveViewModel @ViewModelInject constructor(
     repository: BasketballRepository
 ) : ViewModel() {
-    var basketballScoreList = MutableLiveData<Resource<BasketballScoreModel>>()
+    var basketballLiveList = MutableLiveData<Resource<BasketballScoreModel>>()
     init {
         viewModelScope.launch {
-            basketballScoreList.value = repository.getBasketballScore()
+            basketballLiveList.value = repository.getBasketballScore()
         }
     }
 }

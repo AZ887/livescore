@@ -1,4 +1,4 @@
-package com.pegasus.livescore.view.basketball
+package com.pegasus.livescore.view.basketball.score
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,8 @@ import com.pegasus.livescore.util.Resource
 import com.pegasus.livescore.util.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
-class BasketballHistoryFragment : Fragment(), BasketballHistoryAdapter.BasketballHistoryItemListener {
+class BasketballHistoryFragment : Fragment(),
+    BasketballHistoryAdapter.BasketballHistoryItemListener {
 
     private var binding: FragmentBasketballHistoryBinding by autoCleared()
     private val viewModel: BasketballHistoryViewModel by viewModels()
