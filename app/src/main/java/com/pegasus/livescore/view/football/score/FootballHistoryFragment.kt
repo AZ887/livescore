@@ -85,9 +85,9 @@ class FootballHistoryFragment : Fragment(), FootballHistoryAdapter.FootballScore
             when (it.status) {
                 Resource.Status.SUCCESS -> {
 //                    binding.progressBar.visibility = View.GONE
-                    if (!it.data.isNullOrEmpty()) {
+                    if (!it.data?.matchList.isNullOrEmpty()) {
 
-                        adapter.setItems(ArrayList(it.data))
+                        adapter.setItems(it.data?.matchList as ArrayList<FootballMatch>)
                     }
                 }
                 Resource.Status.ERROR ->

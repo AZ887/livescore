@@ -7,12 +7,9 @@ import javax.inject.Inject
 
 class BasketballRepository @Inject constructor(
     private val remoteDataSource: BasketballDataSource,
-    private val localDataSource: BasketballDao
 ) {
 
-    fun getBasketballScore() = performGetOperation(
-        databaseQuery = { localDataSource.getAllItemsByDate() },
+    suspend fun getBasketballScore() = performGetOperation(
         networkCall = { remoteDataSource.getBasketballMatch() },
-        saveCallResult = { localDataSource.insertAllItems(it.matchList) }
     )
 }

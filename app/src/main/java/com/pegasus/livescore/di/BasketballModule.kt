@@ -32,7 +32,6 @@ object BasketballModule {
 
     @Singleton
     @Provides
-    fun provideRepository(remoteDataSource: BasketballDataSource,
-                          localDataSource: BasketballDao
-    ) = BasketballRepository(remoteDataSource, localDataSource)
+    fun provideRepository(remoteDataSource: BasketballDataSource
+    ) = BasketballRepository(remoteDataSource)
 }

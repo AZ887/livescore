@@ -34,6 +34,5 @@ object FootballModule {
     @Provides
     fun provideRepository(
         remoteDataSource: FootballDataSource,
-        localDataSource: FootballDao
-    ) = FootballRepository(remoteDataSource, localDataSource)
+    ) = FootballRepository(remoteDataSource)
 }

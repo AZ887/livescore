@@ -52,7 +52,7 @@ class BasketballHistoryFragment : Fragment(), BasketballHistoryAdapter.Basketbal
             when (it.status) {
                 Resource.Status.SUCCESS -> {
 //                    binding.progressBar.visibility = View.GONE
-                    if (!it.data.isNullOrEmpty()) adapter.setItems(ArrayList(it.data))
+                    if (!it.data?.matchList.isNullOrEmpty()) adapter.setItems(it.data?.matchList as ArrayList<BasketballMatch>)
                 }
                 Resource.Status.ERROR ->
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
