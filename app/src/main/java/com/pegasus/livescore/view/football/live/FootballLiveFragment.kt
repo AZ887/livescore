@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,11 +15,13 @@ import com.pegasus.livescore.database.entitymodel.football.FootballMatch
 import com.pegasus.livescore.databinding.FragmentFootballLiveBinding
 import com.pegasus.livescore.util.Resource
 import com.pegasus.livescore.util.autoCleared
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemListener {
 
     private var binding: FragmentFootballLiveBinding by autoCleared()
-    private var viewModel: FootballLiveViewModel by autoCleared()
+    private val viewModel: FootballLiveViewModel by viewModels()
     private lateinit var adapter: FootballLiveAdapter
     companion object {
         fun newInstance() = FootballLiveFragment()
@@ -28,7 +31,8 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_football_live, container, false)
+        binding = FragmentFootballLiveBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

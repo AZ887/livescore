@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:layout_margin="8dp">
 
     <include
         android:id="@+id/layout_section_header"
@@ -25,18 +27,20 @@
     <include
         android:id="@+id/layout_left_team_detail"
         layout="@layout/common_vh_item_team_logo_2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_header"
-        app:layout_constraintRight_toLeftOf="@id/guideline_left"/>
+        app:layout_constraintRight_toLeftOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/layout_header" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.3" />
 
     <include
         android:id="@+id/layout_match_live_status"
@@ -52,15 +56,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.7" />
 
     <include
         android:id="@+id/layout_right_team_detail"
         layout="@layout/common_vh_item_team_logo_2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/layout_header"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         app:layout_constraintLeft_toRightOf="@+id/guideline_right"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_header" />
+
+    
 
 </androidx.constraintlayout.widget.ConstraintLayout>

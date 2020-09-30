@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.main_nav_host) //Initialising navController
 
         appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.nav_live, R.id.nav_history, R.id.nav_football_history, R.id.nav_basketball_history
+            R.id.nav_live, R.id.nav_history, R.id.nav_football_history, R.id.nav_basketball_history, R.id.nav_football_live
         ) //Pass the ids of fragments from nav_graph which you d'ont want to show back button in toolbar
             .setOpenableLayout(main_drawer_layout) //Pass the drawer layout id from activity xml
             .build()
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = main_nav_host as NavHostFragment
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.mobile_navigation)
-        graph.startDestination = R.id.nav_football_history
+        graph.startDestination = R.id.nav_football_live
 
         navHostFragment.navController.graph = graph
 
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                     when (currentSport) {
                         0 -> {
                             supportActionBar?.title = "Football"
-                            navController.navigate(R.id.nav_football_history)
+                            navController.navigate(R.id.nav_football_live)
 
                         }
                         1 -> {
