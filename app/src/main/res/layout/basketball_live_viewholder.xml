@@ -28,7 +28,7 @@
         android:id="@+id/layout_left_team_detail"
         layout="@layout/common_vh_item_team_logo_2"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -46,8 +46,8 @@
         android:id="@+id/layout_match_live_status"
         layout="@layout/common_vh_item_match_live_status"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_header"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/layout_left_team_detail"
         app:layout_constraintLeft_toRightOf="@id/guideline_left"
         app:layout_constraintRight_toLeftOf="@id/guideline_right" />
 
@@ -62,10 +62,19 @@
         android:id="@+id/layout_right_team_detail"
         layout="@layout/common_vh_item_team_logo_2"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
         app:layout_constraintLeft_toRightOf="@+id/guideline_right"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_header" />
+        app:layout_constraintTop_toTopOf="@+id/layout_match_live_status" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="layout_left_team_detail,layout_match_live_status,layout_right_team_detail" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
