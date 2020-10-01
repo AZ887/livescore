@@ -7,33 +7,39 @@
     >
 
     <fragment
+        android:id="@+id/nav_football"
+        android:name="com.pegasus.livescore.view.football.score.FootballHistoryFragment"
+        android:label="@string/menu_latest_news" />
+    <fragment
+        android:id="@+id/nav_basketball"
+        android:name="com.pegasus.livescore.view.football.score.FootballHistoryFragment"
+        android:label="@string/menu_latest_news" />
+    <fragment
         android:id="@+id/nav_live"
-        android:name="com.pegasus.livescore.view.LiveFragment"
-        android:label="@string/menu_latest_news"
-        tools:layout="@layout/fragment_live" />
+        android:name="com.pegasus.livescore.view.football.score.FootballHistoryFragment"
+        android:label="@string/menu_latest_news" />
     <fragment
         android:id="@+id/nav_history"
-        android:name="com.pegasus.livescore.view.AllFragment"
-        android:label="@string/menu_history"
-        tools:layout="@layout/fragment_all" />
+        android:name="com.pegasus.livescore.view.football.score.FootballHistoryFragment"
+        android:label="@string/menu_history" />
     <fragment
         android:id="@+id/nav_football_history"
         android:name="com.pegasus.livescore.view.football.score.FootballHistoryFragment"
-        android:label="@string/menu_history"
+        android:label="@string/menu_soccer"
         tools:layout="@layout/fragment_football_history" />
     <fragment
         android:id="@+id/nav_basketball_history"
         android:name="com.pegasus.livescore.view.basketball.score.BasketballHistoryFragment"
-        android:label="@string/menu_history"
+        android:label="@string/menu_basket_ball"
         tools:layout="@layout/fragment_basketball_history" />
     <fragment
         android:id="@+id/nav_football_live"
         android:name="com.pegasus.livescore.view.football.live.FootballLiveFragment"
-        android:label="@string/menu_history"
+        android:label="@string/menu_soccer"
         tools:layout="@layout/fragment_football_live" />
     <fragment
         android:id="@+id/nav_basketball_live"
         android:name="com.pegasus.livescore.view.basketball.live.BasketballLiveFragment"
-        android:label="@string/menu_history"
+        android:label="@string/menu_basket_ball"
         tools:layout="@layout/fragment_basketball_live" />
 </navigation>

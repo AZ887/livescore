@@ -33,7 +33,7 @@ class BasketballLiveViewHolder(private val itemBinding: BasketballLiveViewholder
 
         Glide.with(itemBinding.root)
             .load(item.homeLogo)
-            .placeholder(R.drawable.ic_football_default)
+            .placeholder(R.drawable.ic_basketball_default)
             .into(itemBinding.layoutLeftTeamDetail.ivTeamLogo)
 
         itemBinding.layoutLeftTeamDetail.tvTeamName.text = item.homeTeamEn
@@ -47,10 +47,9 @@ class BasketballLiveViewHolder(private val itemBinding: BasketballLiveViewholder
         itemBinding.layoutMatchLiveStatus.tvMatchOdd5.text = "0.99"
         itemBinding.layoutMatchLiveStatus.tvMatchOdd6.text = "0.99"
 
-
         Glide.with(itemBinding.root)
             .load(item.awayLogo)
-            .placeholder(R.drawable.ic_football_default)
+            .placeholder(R.drawable.ic_basketball_default)
             .into(itemBinding.layoutRightTeamDetail.ivTeamLogo)
         itemBinding.layoutRightTeamDetail.tvTeamName.text = item.awayTeamEn
     }

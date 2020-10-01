@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var toolbarSpinner: Spinner
     private var currentSport = 0
+    private var currentTab = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,7 +34,14 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.main_nav_host) //Initialising navController
 
         appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.nav_live, R.id.nav_history, R.id.nav_football_history, R.id.nav_basketball_history, R.id.nav_football_live,R.id.nav_basketball_live
+            R.id.nav_football,
+            R.id.nav_basketball,
+            R.id.nav_live,
+            R.id.nav_history,
+            R.id.nav_football_history,
+            R.id.nav_basketball_history,
+            R.id.nav_football_live,
+            R.id.nav_basketball_live
         ) //Pass the ids of fragments from nav_graph which you d'ont want to show back button in toolbar
             .setOpenableLayout(main_drawer_layout) //Pass the drawer layout id from activity xml
             .build()
@@ -57,51 +65,43 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = main_nav_host as NavHostFragment
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.mobile_navigation)
-        graph.startDestination = R.id.nav_basketball_live
+        graph.startDestination = R.id.nav_football
 
         navHostFragment.navController.graph = graph
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.nav_live -> {
-                    when (currentSport) {
-                        0 -> {
-                            supportActionBar?.title = "Football"
-                            navController.navigate(R.id.nav_football_live)
-
-                        }
-                        1 -> {
-                            supportActionBar?.title = "basketball"
-                            navController.navigate(R.id.nav_basketball_history)
-
-                        }
-                    }
-                }
-                R.id.nav_football_history -> {
+                R.id.nav_football -> {
                     currentSport = 0
-                    supportActionBar?.title = "Football"
+                    navigate()
                 }
-                R.id.nav_basketball_history -> {
+                R.id.nav_basketball -> {
                     currentSport = 1
-                    supportActionBar?.title = "Basketball"
+                    navigate()
+                }
+                R.id.nav_live -> {
+                    currentTab = 0
+                    navigate()
                 }
                 R.id.nav_history -> {
-                    when (currentSport) {
-                        0 -> {
-                            supportActionBar?.title = "Football"
-                            navController.navigate(R.id.nav_football_history)
-
-                        }
-                        1 -> {
-                            supportActionBar?.title = "basketball"
-                            navController.navigate(R.id.nav_basketball_history)
-
-                        }
-                    }
+                    currentTab = 1
+                    navigate()
                 }
             }
         }
 
+    }
+
+    private fun navigate(){
+        if(currentSport == 0 && currentTab == 0){
+            navController.navigate(R.id.nav_football_live)
+        }else if (currentSport == 0 && currentTab == 1){
+            navController.navigate(R.id.nav_football_history)
+        }else if (currentSport == 1 && currentTab == 0){
+            navController.navigate(R.id.nav_basketball_live)
+        }else if (currentSport == 1 && currentTab == 1){
+            navController.navigate(R.id.nav_basketball_history)
+        }
     }
 
     private fun setupNavControl() {
@@ -140,4 +140,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         return super.onCreateOptionsMenu(menu)
     }
+
+
 }
