@@ -46,6 +46,7 @@ class BasketballHistoryViewHolder(private val itemBinding: BasketballViewholderB
             .into(itemBinding.layoutTeam2.ivTeamLogo)
         itemBinding.layoutTeam2.tvTeamName.text = item.awayTeamEn
         itemBinding.layoutTeam2.tvTeamScore.text = item.awayScore.toString()
+
     }
 
     override fun onClick(v: View?) {

@@ -4,4 +4,6 @@
     <stroke
         android:width="2dip"
         android:color="@color/color_common_list_border" />
+    <solid
+        android:color="@color/color_quarter_score"/>
 </shape>

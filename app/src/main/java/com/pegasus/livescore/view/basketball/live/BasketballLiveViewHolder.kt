@@ -52,6 +52,30 @@ class BasketballLiveViewHolder(private val itemBinding: BasketballLiveViewholder
             .placeholder(R.drawable.ic_basketball_default)
             .into(itemBinding.layoutRightTeamDetail.ivTeamLogo)
         itemBinding.layoutRightTeamDetail.tvTeamName.text = item.awayTeamEn
+
+        itemBinding.layoutBasketballQuarterDetail.tvTeamTitle.tvTitle.text = ""
+        itemBinding.layoutBasketballQuarterDetail.tvTeamTitle.tvTeamScore1.text = "Home"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamTitle.tvTeamScore2.text = "Away"
+
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore1.tvTitle.text = "Q1"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore1.tvTeamScore1.text = "999"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore1.tvTeamScore2.text = "999"
+
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore2.tvTitle.text = "Q2"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore2.tvTeamScore1.text = "999"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore2.tvTeamScore2.text = "999"
+
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore3.tvTitle.text = "Q3"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore3.tvTeamScore1.text = "999"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore3.tvTeamScore2.text = "999"
+
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore4.tvTitle.text = "Q4"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore4.tvTeamScore1.text = "999"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamQuarterScore4.tvTeamScore2.text = "999"
+
+        itemBinding.layoutBasketballQuarterDetail.tvTeamFinalScore.tvTitle.text = "F"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamFinalScore.tvTeamScore1.text = "999"
+        itemBinding.layoutBasketballQuarterDetail.tvTeamFinalScore.tvTeamScore2.text = "999"
     }
 
     override fun onClick(v: View?) {
