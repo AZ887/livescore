@@ -36,10 +36,31 @@
         android:id="@+id/nav_football_live"
         android:name="com.pegasus.livescore.view.football.live.FootballLiveFragment"
         android:label="@string/menu_soccer"
-        tools:layout="@layout/fragment_football_live" />
+        tools:layout="@layout/fragment_football_live">
+
+        <action
+            android:id="@+id/action_nav_football_live_to_footballAnalysisFragment"
+            app:destination="@id/footballAnalysisFragment">
+            <argument
+                android:name="matchId"
+                app:argType="string" />
+            <argument
+                android:name="homeName"
+                app:argType="string" />
+            <argument
+                android:name="awayName"
+                app:argType="string" />
+        </action>
+
+    </fragment>
     <fragment
         android:id="@+id/nav_basketball_live"
         android:name="com.pegasus.livescore.view.basketball.live.BasketballLiveFragment"
         android:label="@string/menu_basket_ball"
         tools:layout="@layout/fragment_basketball_live" />
+    <fragment
+        android:id="@+id/footballAnalysisFragment"
+        android:name="com.pegasus.livescore.view.football.analysis.FootballAnalysisFragment"
+        android:label="@string/menu_analysis"
+        tools:layout="@layout/fragment_football_analysis" />
 </navigation>

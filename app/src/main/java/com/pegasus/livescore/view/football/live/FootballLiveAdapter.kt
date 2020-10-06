@@ -12,7 +12,7 @@ import kotlin.collections.ArrayList
 class FootballLiveAdapter(private val listener: FootballLiveItemListener) : RecyclerView.Adapter<FootballLiveViewHolder>() {
 
     interface FootballLiveItemListener {
-        fun onClickViewHolder(item: FootballMatch)
+        fun onClickViewHolder(id: Int, item: FootballMatch)
     }
 
     private val items = ArrayList<FootballMatch>()

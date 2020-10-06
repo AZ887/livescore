@@ -8,4 +8,5 @@ class FootballDataSource @Inject constructor(
     private val footballService: FootballService
 ) : BaseDataSource() {
     suspend fun getFootballMatch() = getResult { footballService.getFootballScore() }
+    suspend fun getFootballAnalysis(matchId:String) = getResult { footballService.getFootballAnalysis(matchId) }
 }

@@ -104,11 +104,18 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
         })
     }
 
-    override fun onClickViewHolder(item: FootballMatch) {
-        findNavController().navigate(
-            R.id.nav_basketball_history
+    override fun onClickViewHolder(v:Int,item: FootballMatch) {
+//        when(v){
+//            R.id.tv_test_button ->{
+                val action = FootballLiveFragmentDirections.actionNavFootballLiveToFootballAnalysisFragment(
+                    item.matchId.toString(), item.homeNameEn, item.awayNameEn)
+                findNavController().navigate(action)
+//            }
+//        }
+//        findNavController().navigate(
+//            R.id.nav_basketball_history
 //            bundleOf("id" to characterId)
-        )
+//        )
     }
 
 }

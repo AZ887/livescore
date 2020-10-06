@@ -19,4 +19,11 @@ object DateTimeUtil {
         }
         return null
     }
+
+    @Singleton
+    fun simpleDateFormatConverter(datestring: String? = "") : String{
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH)
+        val newDate : Date = format.parse(datestring)
+        return SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(newDate)
+    }
 }

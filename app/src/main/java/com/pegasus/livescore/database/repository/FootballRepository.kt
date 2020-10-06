@@ -11,4 +11,7 @@ class FootballRepository @Inject constructor(
     suspend fun getFootballScore() = performGetOperation(
         networkCall = { remoteDataSource.getFootballMatch() }
     )
+    suspend fun getFootballAnalysis(matchId: String) = performGetOperation (
+        networkCall = {remoteDataSource.getFootballAnalysis(matchId)}
+    )
 }

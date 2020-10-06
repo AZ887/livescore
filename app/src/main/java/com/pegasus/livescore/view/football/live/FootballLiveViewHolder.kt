@@ -8,6 +8,7 @@ import com.pegasus.livescore.R
 import com.pegasus.livescore.database.entitymodel.football.FootballMatch
 import com.pegasus.livescore.databinding.FootballLiveViewholderBinding
 import com.pegasus.livescore.util.DateTimeUtil
+import kotlinx.android.synthetic.main.football_live_viewholder.view.*
 import java.text.SimpleDateFormat
 
 class FootballLiveViewHolder(private val itemBinding: FootballLiveViewholderBinding, private val listener: FootballLiveAdapter.FootballLiveItemListener) : RecyclerView.ViewHolder(itemBinding.root),
@@ -55,9 +56,16 @@ class FootballLiveViewHolder(private val itemBinding: FootballLiveViewholderBind
 
         itemBinding.layoutFootballPreScoreDetail.tvFootballCorner.text = "C : 1-6"
         itemBinding.layoutFootballPreScoreDetail.tvFootballHt.text = "HT : 0-0"
+        addButton(itemBinding, item)
     }
 
-    override fun onClick(v: View?) {
-        listener.onClickViewHolder(this.footballMatch)
+    private fun addButton(itemBinding: FootballLiveViewholderBinding, item: FootballMatch){
+        if(item.havLineup){
+            itemBinding.tvTestButton.setOnClickListener(this)
+        }
+    }
+
+    override fun onClick(v: View) {
+            listener.onClickViewHolder(v.id, this.footballMatch)
     }
 }

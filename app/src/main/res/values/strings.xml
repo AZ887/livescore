@@ -14,12 +14,138 @@
     <string name="menu_soccer">Soccer</string>
     <string name="menu_basket_ball">Basketball</string>
     <string name="menu_latest_news">latest news</string>
+    <string name="menu_analysis">analysis</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="Sport">
         <item>Hot Today</item>
         <item>All League</item>
+    </string-array>
+
+    //common
+    <string name="common_home">Home</string>
+    <string name="common_away">Away</string>
+    <string name="common_team">Team</string>
+    <string name="common_odds">Odds</string>
+    <string name="common_Goals">Goals</string>
+    <string name="common_total_t">T</string>
+    <string name="common_home_h">H</string>
+    <string name="common_away_a">A</string>
+
+    //analysis
+    <string name="analysis_vs">VS</string>
+    <string name="analysis_match_record_10game">Match Record(10 games)</string>
+    <string name="analysis_recent_record_10game">Recent Record(10 games)</string>
+    <string name="analysis_next_5_game_schedule">Next 5 Games Schedule</string>
+    <string name="analysis_goals">Distribution Of Goals In The First And Second Half</string>
+    <string name="analysis_halftime">Halftime/Fulltime/Win/Draw/Lose</string>
+    <string name="analysis_time_statistics">Time Statistics</string>
+
+    <string-array name="header_analysis_headToHead">
+        <item>Match</item>
+        <item>Home</item>
+        <item>Full/Half</item>
+        <item>Away</item>
+    </string-array>
+
+    <string-array name="header_analysis_team_odds">
+        <item></item>
+        <item>Round</item>
+        <item>Handicap/W/O/L/%</item>
+        <item>Over</item>
+        <item>Under</item>
+    </string-array>
+
+    <string-array name="header_analysis_team_odds_recent6">
+        <item></item>
+        <item>Round</item>
+        <item>Handicap/%</item>
+        <item>Over/Under</item>
+    </string-array>
+
+    <string-array name="header_analysis_team_odds_recent">
+        <item></item>
+        <item>Round</item>
+        <item>Handicap/%</item>
+        <item>Over/Under</item>
+    </string-array>
+
+    <string-array name="header_analysis_team_goals">
+        <item></item>
+        <item>G0</item>
+        <item>G1</item>
+        <item>G2</item>
+        <item>G3</item>
+        <item>G4+</item>
+        <item>FH</item>
+        <item>SH</item>
+    </string-array>
+
+    <string-array name="header_analysis_team_goals_list_item">
+        <item></item>
+        <item>T</item>
+        <item>H</item>
+        <item>A</item>
+    </string-array>
+
+    <string-array name="header_analysis_team_halftime">
+        <item></item>
+        <item>HT-W, FT-W</item>
+        <item>HT-W, FT-D</item>
+        <item>HT-W, FT-L</item>
+        <item>HT-D, FT-W</item>
+        <item>HT-D, FT-D+</item>
+        <item>HT-D, FT-L</item>
+        <item>HT-L, FT-W</item>
+        <item>HT-L, FT-D</item>
+        <item>HT-L, FT-L</item>
+    </string-array>
+
+    <string-array name="header_analysis_team_time_statistics">
+        <item></item>
+        <item>1-10</item>
+        <item>11-20</item>
+        <item>21-30</item>
+        <item>31-40</item>
+        <item>41-50</item>
+        <item>51-60</item>
+        <item>61-70</item>
+        <item>71-80</item>
+        <item>81-90+</item>
+    </string-array>
+
+    <string-array name="header_analysis_team_goals_time_analysis">
+        <item></item>
+        <item>T</item>
+        <item>H</item>
+        <item>A</item>
+        <item>First Goal Total</item>
+        <item>First Goal Home</item>
+        <item>First Goal Away</item>
+    </string-array>
+
+    <string-array name="header_analysis_home_team_odd">
+        <item>Total(FullTime)</item>
+        <item>Home</item>
+        <item>Away</item>
+        <item>Recent 6 Games(Full)</item>
+        <item>Total(Halftime)</item>
+        <item>Home</item>
+        <item>Away</item>
+        <item>Recent 6 Games(Half)</item>
+    </string-array>
+
+    <string-array name="header_analysis_team_half_time_summary">
+        <item>HalfTime</item>
+        <item>FullTime</item>
+    </string-array>
+
+    <string-array name="header_analysis_team_half_time_wdl">
+        <item>HalfTime</item>
+        <item>FullTime</item>
+        <item>T</item>
+        <item>H</item>
+        <item>A</item>
     </string-array>
 </resources>
