@@ -46,43 +46,6 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupObservers()
-        var request: Request = Request.Builder().url("wss://www.77577.com:6001/app/AABBCCDD?protocol=7&client=js&version=5.1.1&flash=false").build()
-        var webSocketListener: WebSocketListener = object : WebSocketListener() {
-            override fun onOpen(webSocket: WebSocket, response: Response) {
-                webSocket.send(
-                    """{
-                        "event": "pusher:subscribe",
-                        "data": { "auth": "",
-                        "channel":"channel-live-zqbf-match-list" }
-                    }"""
-                )
-                Log.e(TAG, "onOpen")
-            }
-
-            override fun onMessage(webSocket: WebSocket, text: String) {
-                Log.e(TAG, "MESSAGE: $text")
-            }
-
-            override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
-                Log.e(TAG, "MESSAGE: " + bytes.hex())
-            }
-
-            override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
-                webSocket.close(1000, null)
-                webSocket.cancel()
-                Log.e(TAG, "CLOSE: $code $reason")
-            }
-
-            override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
-                Log.e(TAG, "onClosed" )
-            }
-
-            override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
-                Log.e(TAG, "onFailure" )
-            }
-        }
-        okHttpClient.newWebSocket(request,webSocketListener)
-//        okHttpClient.dispatcher.executorService.shutdown()
     }
 
 
