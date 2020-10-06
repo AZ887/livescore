@@ -1,6 +1,8 @@
 package com.pegasus.livescore.view.football.live
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,9 @@ import com.pegasus.livescore.databinding.FragmentFootballLiveBinding
 import com.pegasus.livescore.util.Resource
 import com.pegasus.livescore.util.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.*
+import okio.ByteString
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemListener {
@@ -26,6 +31,8 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
     companion object {
         fun newInstance() = FootballLiveFragment()
     }
+    @Inject
+    lateinit var okHttpClient: OkHttpClient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,41 +46,42 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupObservers()
-//        var request: Request = Request.Builder().url("wss://www.77577.com:6001/app/AABBCCDD?protocol=7&client=js&version=5.1.1&flash=false").build()
-//        var webSocketListener: WebSocketListener = object : WebSocketListener() {
-//            override fun onOpen(webSocket: WebSocket, response: Response) {
-//                webSocket.send(
-//                    """{
-//    "type": "subscribe",
-//    "channels": [{ "name": "channel-live-zqbf-match-list" }]
-//}"""
-//                )
-//                Log.e(TAG, "onOpen")
-//            }
-//
-//            override fun onMessage(webSocket: WebSocket, text: String) {
-//                Log.e(TAG, "MESSAGE: $text")
-//            }
-//
-//            override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
-//                Log.e(TAG, "MESSAGE: " + bytes.hex())
-//            }
-//
-//            override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
-//                webSocket.close(1000, null)
-//                webSocket.cancel()
-//                Log.e(TAG, "CLOSE: $code $reason")
-//            }
-//
-//            override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
-//                Log.e(TAG, "onClosed" )
-//            }
-//
-//            override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
-//                Log.e(TAG, "onFailure" )
-//            }
-//        }
-//        okHttpClient.newWebSocket(request,webSocketListener)
+        var request: Request = Request.Builder().url("wss://www.77577.com:6001/app/AABBCCDD?protocol=7&client=js&version=5.1.1&flash=false").build()
+        var webSocketListener: WebSocketListener = object : WebSocketListener() {
+            override fun onOpen(webSocket: WebSocket, response: Response) {
+                webSocket.send(
+                    """{
+                        "event": "pusher:subscribe",
+                        "data": { "auth": "",
+                        "channel":"channel-live-zqbf-match-list" }
+                    }"""
+                )
+                Log.e(TAG, "onOpen")
+            }
+
+            override fun onMessage(webSocket: WebSocket, text: String) {
+                Log.e(TAG, "MESSAGE: $text")
+            }
+
+            override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
+                Log.e(TAG, "MESSAGE: " + bytes.hex())
+            }
+
+            override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
+                webSocket.close(1000, null)
+                webSocket.cancel()
+                Log.e(TAG, "CLOSE: $code $reason")
+            }
+
+            override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
+                Log.e(TAG, "onClosed" )
+            }
+
+            override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
+                Log.e(TAG, "onFailure" )
+            }
+        }
+        okHttpClient.newWebSocket(request,webSocketListener)
 //        okHttpClient.dispatcher.executorService.shutdown()
     }
 
