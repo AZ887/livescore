@@ -148,4 +148,36 @@
         <item>H</item>
         <item>A</item>
     </string-array>
+
+    //football team information
+    <string-array name="header_team_information_tablayout">
+        <item>Team</item>
+        <item>Player</item>
+        <item>Transfer Record</item>
+    </string-array>
+
+    <string-array name="header_team_information_detail">
+        <item>Team Name</item>
+        <item>Establishment</item>
+        <item>Location</item>
+        <item>Stadium</item>
+        <item>Capacity</item>
+        <item>Address</item>
+        <item>Website</item>
+        <item>Head Coach</item>
+    </string-array>
+
+    <string-array name="header_team_player_detail">
+        <item>Player Name</item>
+        <item>DOB</item>
+        <item>Height</item>
+        <item>Weight</item>
+        <item>Nationality</item>
+        <item>Value</item>
+        <item>Dominant Foot</item>
+        <item>Position</item>
+        <item>Jersey No</item>
+        <item>Contract</item>
+    </string-array>
+
 </resources>

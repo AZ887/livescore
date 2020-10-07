@@ -69,9 +69,6 @@ class FootballAnalysisFragment : Fragment() {
             if(mainList.isNotEmpty()){
                 mainList.forEach { (key, value) ->
                     filterListToView(key, value)
-                    for(item in value){
-
-                    }
                 }
             }
         }

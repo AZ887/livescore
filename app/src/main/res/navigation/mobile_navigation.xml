@@ -40,7 +40,7 @@
 
         <action
             android:id="@+id/action_nav_football_live_to_footballAnalysisFragment"
-            app:destination="@id/footballAnalysisFragment">
+            app:destination="@id/nav_football_analysis">
             <argument
                 android:name="matchId"
                 app:argType="string" />
@@ -51,6 +51,13 @@
                 android:name="awayName"
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_nav_football_live_to_nav_football_team_information"
+            app:destination="@id/nav_football_team_information">
+            <argument
+                android:name="teamId"
+                app:argType="string" />
+        </action>
 
     </fragment>
     <fragment
@@ -59,8 +66,15 @@
         android:label="@string/menu_basket_ball"
         tools:layout="@layout/fragment_basketball_live" />
     <fragment
-        android:id="@+id/footballAnalysisFragment"
-        android:name="com.pegasus.livescore.view.football.analysis.FootballAnalysisFragment"
+    android:id="@+id/nav_football_analysis"
+    android:name="com.pegasus.livescore.view.football.analysis.FootballAnalysisFragment"
+    android:label="@string/menu_analysis"
+    tools:layout="@layout/fragment_football_analysis" />
+
+    <fragment
+        android:id="@+id/nav_football_team_information"
+        android:name="com.pegasus.livescore.view.football.teaminformation.fragment.FootballTeamInformationFragment"
         android:label="@string/menu_analysis"
         tools:layout="@layout/fragment_football_analysis" />
+
 </navigation>

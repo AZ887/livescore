@@ -31,13 +31,13 @@ init {
         var request: Request = Request.Builder().url("wss://www.77577.com:6001/app/AABBCCDD?protocol=7&client=js&version=5.1.1&flash=false").build()
         var webSocketListener: WebSocketListener = object : WebSocketListener() {
             override fun onOpen(webSocket: WebSocket, response: Response) {
-                webSocket.send(
-                    """{
-                        "event": "pusher:subscribe",
-                        "data": { "auth": "",
-                        "channel":"channel-live-zqbf-match-list" }
-                    }"""
-                )
+//                webSocket.send(
+//                    """{
+//                        "event": "pusher:subscribe",
+//                        "data": { "auth": "",
+//                        "channel":"channel-live-zqbf-match-list" }
+//                    }"""
+//                )
                 Log.e(ContentValues.TAG, "onOpen")
             }
 

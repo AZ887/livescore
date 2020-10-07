@@ -17,29 +17,12 @@ class FootballAnalysisViewModel @ViewModelInject constructor(
 ) : ViewModel(){
     var footballAnalysisList = MutableLiveData<Resource<FootballAnalysisModel>>()
 //    var viewHolderModel : MutableMap<String, List<String>> = mutableMapOf()
-    val matchId = savedStateHandle.get<String>("matchId")
+    private val matchId = savedStateHandle.get<String>("matchId")
     val homeName = savedStateHandle.get<String>("homeName")
     val awayName = savedStateHandle.get<String>("awayName")
     init {
         viewModelScope.launch {
-//            var response = repository.getFootballAnalysis(matchId.toString())
-//            response.data?.list?.let { convertListToMap(viewHolderModel, it) }
             footballAnalysisList.value = repository.getFootballAnalysis(matchId.toString())
-        }
-    }
-
-    private fun convertListToMap(map: MutableMap<String, List<String>>, responseList: List<Map<String, List<List<String>>>>){
-        for(mainList in responseList){
-            if(mainList.isNotEmpty()){
-                mainList.forEach { (key, value) ->
-                    println("$key = $value")
-                    var listjoinString : MutableList<String> = mutableListOf()
-                    for(item in value){
-                        listjoinString.add(item.joinToString())
-                    }
-                    map.put(key,listjoinString)
-                }
-            }
         }
     }
 }
