@@ -11,7 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pegasus.livescore.R
+import com.pegasus.livescore.database.entitymodel.football.FootballEvent
 import com.pegasus.livescore.database.entitymodel.football.FootballMatch
+import com.pegasus.livescore.database.entitymodel.football.FootballTechnic
 import com.pegasus.livescore.databinding.FragmentFootballLiveBinding
 import com.pegasus.livescore.util.Resource
 import com.pegasus.livescore.util.autoCleared
@@ -25,6 +27,9 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
     private var binding: FragmentFootballLiveBinding by autoCleared()
     private val viewModel: FootballLiveViewModel by viewModels()
     private lateinit var adapter: FootballLiveAdapter
+    private var eventList:MutableList<FootballEvent> = mutableListOf()
+    private var eventTechnic: MutableList<FootballTechnic> = mutableListOf()
+
 
     companion object {
         fun newInstance() = FootballLiveFragment()
@@ -72,6 +77,28 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
 //                    binding.progressBar.visibility = View.VISIBLE
             }
         })
+        viewModel.footballEventList.observe(viewLifecycleOwner, Observer {
+            when (it.status) {
+                Resource.Status.SUCCESS -> {
+//                    binding.progressBar.visibility = View.GONE
+                    if (!it.data?.eventList.isNullOrEmpty()) {
+
+                        eventList.addAll(it.data?.eventList as ArrayList)
+                    }
+                    if (!it.data?.technic.isNullOrEmpty()) {
+
+                        eventTechnic.addAll(it.data?.technic as ArrayList)
+                    }
+                }
+                Resource.Status.ERROR ->
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+
+//                Resource.Status.LOADING ->
+                //todo
+//                    binding.progressBar.visibility = View.VISIBLE
+            }
+        })
+
     }
 
     override fun onClickViewHolder(action: String, item: FootballMatch) {
@@ -98,6 +125,25 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
                         item.awayNameEn
                     )
                 findNavController().navigate(action)
+            }
+            resources.getString(R.string.live_button_league_text) -> {
+                val action =
+                    FootballLiveFragmentDirections.actionNavFootballLiveToNavFootballLeague(
+                        item.leagueId.toString(),
+                        item.subLeagueId,
+                        item.groupId.toString()
+                    )
+                findNavController().navigate(action)
+            }
+            resources.getString(R.string.live_button_event_text) -> {
+
+//                val action =
+//                    FootballLiveFragmentDirections.actionNavFootballLiveToNavFootballEvent(
+//                        item.leagueId.toString(),
+//                        item.subLeagueId,
+//                        item.groupId.toString()
+//                    )
+//                findNavController().navigate(action)
             }
         }
     }

@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.pegasus.livescore.R
 import com.pegasus.livescore.database.entitymodel.football.TeamPlayer
+import com.pegasus.livescore.databinding.CommonVhEmptyItemBinding
 import com.pegasus.livescore.databinding.CommonVhItemImageDetailBinding
 import com.pegasus.livescore.databinding.FootballPlayerFragmentBinding
 import com.pegasus.livescore.util.autoCleared
@@ -32,6 +33,11 @@ class FootballPlayerFragment(private val teamPlayerData: List<TeamPlayer>) : Fra
     }
 
     private fun setupUI() {
+        if(teamPlayerData.isEmpty()){
+            val emptyView = CommonVhEmptyItemBinding.inflate(LayoutInflater.from(context)).root
+            binding.lyFootballTeam.addView(emptyView);
+        }else{
+
         for(teamPlayer in teamPlayerData) {
             val imageDetailView = CommonVhItemImageDetailBinding.inflate(LayoutInflater.from(context))
             Glide.with(imageDetailView.root)
@@ -68,6 +74,8 @@ class FootballPlayerFragment(private val teamPlayerData: List<TeamPlayer>) : Fra
             }
             binding.lyFootballTeam.addView(imageDetailView.root)
         }
+
+        }
     }
 
     private fun mapping(teamInfo: TeamPlayer, index : Int) : String{
@@ -80,8 +88,8 @@ class FootballPlayerFragment(private val teamPlayerData: List<TeamPlayer>) : Fra
             5 -> return teamInfo.value
             6 -> return teamInfo.feetEn
             7 -> return teamInfo.positionEn
-            7 -> return teamInfo.number
-            7 -> return teamInfo.endDateContract
+            8 -> return teamInfo.number
+            9 -> return teamInfo.endDateContract
         }
         return ""
     }

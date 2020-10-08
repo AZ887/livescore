@@ -58,7 +58,30 @@
                 android:name="teamId"
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_nav_football_live_to_nav_football_league"
+            app:destination="@id/nav_football_league">
+            <argument
+                android:name="leagueId"
+                app:argType="string" />
+            <argument
+                android:name="subLeagueId"
+                app:argType="string" />
+            <argument
+                android:name="groupId"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_nav_football_live_to_nav_football_event"
+            app:destination="@id/nav_football_event">
+            <argument
+                android:name="eventModel"
+                app:argType="com.pegasus.livescore.database.entitymodel.football.FootballEvent" />
+            <argument
+                android:name="eventTechnic"
+                app:argType="com.pegasus.livescore.database.entitymodel.football.FootballTechnic" />
 
+        </action>
     </fragment>
     <fragment
         android:id="@+id/nav_basketball_live"
@@ -76,5 +99,15 @@
         android:name="com.pegasus.livescore.view.football.teaminformation.fragment.FootballTeamInformationFragment"
         android:label="@string/menu_analysis"
         tools:layout="@layout/fragment_football_analysis" />
+    <fragment
+        android:id="@+id/nav_football_league"
+        android:name="com.pegasus.livescore.view.football.league.FootballLeagueFragment"
+        android:label="@string/menu_analysis"
+        tools:layout="@layout/football_league_fragment" />
+    <fragment
+        android:id="@+id/nav_football_event"
+        android:name="com.pegasus.livescore.view.football.event.FootballEventFragment"
+        android:label="@string/menu_analysis"
+        tools:layout="@layout/football_event_fragment" />
 
 </navigation>

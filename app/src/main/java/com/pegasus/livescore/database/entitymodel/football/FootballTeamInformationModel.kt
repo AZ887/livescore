@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class FootballTeamInformationModel (
     val teamInfoData: List<TeamInfo>,
     val teamPlayerData: List<TeamPlayer>,
-    val teamPlayerTransferData: List<TeamPlayer>
+    val teamPlayerTransferData: List<TeamPlayerTransfer>
 )
 
 @Serializable
@@ -103,4 +103,43 @@ data class TeamPlayer (
     val introduceId: String,
 
     val positionId: String
+)
+
+
+@Serializable
+data class TeamPlayerTransfer (
+    val id: Long,
+
+    val playId: Long,
+
+    val transferTime: String,
+    val endTime: String,
+    val fromTeamEn: String,
+
+    val fromTeamChs: String,
+
+    val fromTeamCht: String,
+
+    val fromTeamId: Long,
+
+    val toTeamEn: String,
+
+    val toTeamChs: String,
+
+    val toTeamCht: String,
+
+    val toTeamId: Long,
+
+    val money: String,
+    val season: String,
+    val typeEn: String,
+
+    val tpyeCn: String,
+
+    val playerName: String,
+
+    val playerNameChs: String,
+
+    val playerNameEn: String,
+    val playerPhoto: String
 )

@@ -74,7 +74,7 @@ data class BasketballMatch (
     val season: String?,
     val matchKind: String?,
 
-    val cupQualifyId: Long? = null,
+    val cupQualifyId: Long? = 0,
 
     val roundTypeEn: String?,
 
@@ -89,5 +89,5 @@ data class BasketballMatch (
     val havBriefing: Boolean,
     val havAnimate: Boolean,
 
-    val playoffsId: Long? = null
+    val playoffsId: Long? = 0
 )

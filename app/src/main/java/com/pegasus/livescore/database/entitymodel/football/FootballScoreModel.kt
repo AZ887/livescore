@@ -91,8 +91,8 @@ data class FootballMatch (
 
     val extraExplain: String,
     val isHidden: Boolean,
-    val homeLogo: String? = null,
-    val awayLogo: String? = null,
+    val homeLogo: String? = "",
+    val awayLogo: String? = "",
     val havEvent: Boolean,
     val havTech: Boolean,
     val havAnim: Boolean,
@@ -141,16 +141,16 @@ data class FootballMatch (
 
     val explainId: String,
 
-    val groupId: Long? = null
+    val groupId: Long? = 0
 )
 
 @Serializable
 data class Odds (
-    val handicap: List<String>? = null,
-    val handicapHalf: List<String>? = null,
-    val europeOdds: List<String>? = null,
-    val overUnder: List<String>? = null,
-    val overUnderHalf: List<String>? = null
+    val handicap: List<String>? = listOf(),
+    val handicapHalf: List<String>? = listOf(),
+    val europeOdds: List<String>? = listOf(),
+    val overUnder: List<String>? = listOf(),
+    val overUnderHalf: List<String>? = listOf()
 )
 
 @Serializable

@@ -9,6 +9,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.pegasus.livescore.database.repository.FootballRepository
 import androidx.lifecycle.viewModelScope
+import com.pegasus.livescore.database.entitymodel.football.FootballAnalysisModel
+import com.pegasus.livescore.database.entitymodel.football.FootballEventModel
 import com.pegasus.livescore.database.entitymodel.football.FootballScoreModel
 import com.pegasus.livescore.util.Resource
 import kotlinx.coroutines.launch
@@ -20,9 +22,12 @@ class FootballLiveViewModel @ViewModelInject constructor(
     private val okHttpClient: OkHttpClient
 ) : ViewModel() {
     var footballLiveList = MutableLiveData<Resource<FootballScoreModel>>()
+    var footballEventList = MutableLiveData<Resource<FootballEventModel>>()
+
 init {
     viewModelScope.launch {
         footballLiveList.value = repository.getFootballScore()
+        footballEventList.value = repository.getFootballEvent()
         initSocket()
     }
 }

@@ -1,22 +1,20 @@
 package com.pegasus.livescore.database.entitymodel.football
 
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class FootballEventModel (
-    val eventList: List<EventList>,
-    val technic: List<Technic>
+    val eventList: List<FootballEvent>,
+    val technic: List<FootballTechnic>
 )
 
-@Entity(tableName = "eventlist")
-data class EventList (
-    @PrimaryKey
-    val matchID: Long,
-
-    @Embedded val event: List<Event>
+@Serializable
+data class FootballEvent (
+    val matchId: Long,
+    val event: List<Event>
 )
 
+@Serializable
 data class Event (
     val id: Long,
     val isHome: Boolean,
@@ -24,20 +22,19 @@ data class Event (
     val time: String,
     val nameEn: String,
 
-    val nameCHS: String,
+    val nameChs: String,
 
     val nameCht: String,
 
-    val playerID: String,
+    val playerId: String,
 
     val playerId2: String,
     val overtime: String
 )
 
-@Entity(tableName = "technic")
-data class Technic (
-    @PrimaryKey
-    val matchID: Long,
+@Serializable
+data class FootballTechnic (
+    val matchId: Long,
 
     val technicCount: String
 )

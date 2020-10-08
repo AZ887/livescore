@@ -72,7 +72,9 @@ class FootballLiveViewHolder(private val itemBinding: FootballLiveViewholderBind
     }
 
     override fun onClick(v: View) {
-        listener.onClickViewHolder(v.tag.toString(), this.footballMatch)
+        if(v.tag != null){
+            listener.onClickViewHolder(v.tag.toString(), this.footballMatch)
+        }
     }
 
     private fun addButton(itemBinding: FootballLiveViewholderBinding, item: FootballMatch){

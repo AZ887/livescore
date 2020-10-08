@@ -32,7 +32,11 @@
     <string name="common_total_t">T</string>
     <string name="common_home_h">H</string>
     <string name="common_away_a">A</string>
-    
+    <string name="common_empty_view">Temporary, no data.</string>
+    <string name="common_alert_error_title">Service Error</string>
+    <string name="common_alert_error_message">Something went wrong contacting the server. Please check your internet connection and try again.</string>
+    <string name="common_ok">OK</string>
+
     //live
     <string name="live_button_briefing_text">briefing</string>
     <string name="live_button_analysis_text">Analysis</string>
@@ -203,4 +207,14 @@
         <item>Contract</item>
     </string-array>
 
+    <string-array name="header_team_player_transfer_detail">
+        <item>Player Name</item>
+        <item>Transfer Time</item>
+        <item>Contract</item>
+        <item>Transfer From</item>
+        <item>Transfer To</item>
+        <item>Price</item>
+        <item>Season</item>
+        <item>Type</item>
+    </string-array>
 </resources>
