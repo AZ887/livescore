@@ -66,6 +66,5 @@ class BasketballHistoryFragment : Fragment(),
     }
 
     override fun onClickViewHolder(item: BasketballMatch) {
-        TODO("Not yet implemented")
     }
 }

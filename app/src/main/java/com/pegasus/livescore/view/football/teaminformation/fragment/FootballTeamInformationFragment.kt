@@ -77,7 +77,6 @@ class FootballTeamInformationFragment : Fragment() {
                 }
                 Resource.Status.ERROR ->
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-
             }
         })
     }

@@ -39,12 +39,6 @@ class BasketballLiveFragment : Fragment(),
     private fun setupRecyclerView() {
         adapter = BasketballLiveAdapter(this)
         binding.rvFragmentBasketballLive.layoutManager = LinearLayoutManager(requireContext())
-//        binding.rvFragmentBasketball.layoutManager = object : LinearLayoutManager(requireContext()) {
-//            override fun checkLayoutParams(lp: RecyclerView.LayoutParams): Boolean {
-//                lp.height = height / 4
-//                return true
-//            }
-//        }
         binding.rvFragmentBasketballLive.adapter = adapter
     }
 
@@ -66,6 +60,5 @@ class BasketballLiveFragment : Fragment(),
     }
 
     override fun onClickViewHolder(item: BasketballMatch) {
-        TODO("Not yet implemented")
     }
 }

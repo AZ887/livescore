@@ -36,7 +36,7 @@ class FootballPlayerFragment(private val teamPlayerData: List<TeamPlayer>) : Fra
             val imageDetailView = CommonVhItemImageDetailBinding.inflate(LayoutInflater.from(context))
             Glide.with(imageDetailView.root)
                 .load(teamPlayer.photo)
-                .placeholder(R.drawable.ic_basketball_default)
+                .placeholder(R.drawable.ic_empty_profile)
                 .into(imageDetailView.ivCommonVhItem)
             for(i in resources.getStringArray(R.array.header_team_player_detail).indices){
 

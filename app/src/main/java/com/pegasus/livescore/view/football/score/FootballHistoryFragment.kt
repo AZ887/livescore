@@ -101,10 +101,10 @@ class FootballHistoryFragment : Fragment(), FootballHistoryAdapter.FootballScore
     }
 
     override fun onClickViewHolder(item: FootballMatch) {
-        findNavController().navigate(
-            R.id.nav_basketball_history
+//        findNavController().navigate(
+//            R.id.nav_basketball_history
 //            bundleOf("id" to characterId)
-        )
+//        )
     }
 
 }
