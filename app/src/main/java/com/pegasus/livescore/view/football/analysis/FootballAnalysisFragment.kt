@@ -9,11 +9,14 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.pegasus.livescore.R
+import com.pegasus.livescore.database.entitymodel.football.FootballAnalysisModel
+import com.pegasus.livescore.database.entitymodel.football.Referee
+import com.pegasus.livescore.databinding.CommonVhItemImageDetailBinding
 import com.pegasus.livescore.databinding.FragmentFootballAnalysisBinding
 import com.pegasus.livescore.util.DateTimeUtil
 import com.pegasus.livescore.util.Resource
@@ -50,7 +53,7 @@ class FootballAnalysisFragment : Fragment() {
                 Resource.Status.SUCCESS -> {
 //                    binding.progressBar.visibility = View.GONE
                     if (!it.data?.list.isNullOrEmpty()) {
-                        it.data?.list?.let { it1 -> arrangeList(it1) }
+                        arrangeList(it.data as FootballAnalysisModel)
 //                        adapter.setItems(it.data?.matchList as ArrayList<FootballMatch>)
                     }
                 }
@@ -64,14 +67,22 @@ class FootballAnalysisFragment : Fragment() {
         })
     }
 
-    private fun arrangeList(responseList: List<Map<String, List<List<String>>>>){
-        for(mainList in responseList){
+    private fun arrangeList(response: FootballAnalysisModel){
+        for(mainList in response.list){
             if(mainList.isNotEmpty()){
                 mainList.forEach { (key, value) ->
                     filterListToView(key, value)
                 }
             }
         }
+
+            if(response.referee.isNotEmpty()){
+                binding.layoutLinearAnalysisMainList.addView(addTitle(resources.getString(R.string.analysis_referee_information)))
+                for(referee in response.referee){
+                    filterRefereeToView(referee)
+                }
+            }
+
     }
 
     private fun <E> filterListToView(key: String, value: List<E>){
@@ -314,17 +325,10 @@ class FootballAnalysisFragment : Fragment() {
                     if(i == 0){
                         continue
                     }
-                    contentSubList.add(resources.getStringArray(R.array.header_analysis_team_goals_list_item)[i])
-
                     val seperated: List<String> = listItem.toString().replace("[", "").replace("]","")
                         .split("^",",")
-                    contentSubList.add(seperated[1])
-                    contentSubList.add(seperated[2])
-                    contentSubList.add(seperated[3])
-                    contentSubList.add(seperated[4])
-                    contentSubList.add(seperated[5])
-                    contentSubList.add(seperated[6])
-                    contentSubList.add(seperated[7])
+                    contentSubList.addAll(seperated)
+                    contentSubList[0] = resources.getStringArray(R.array.header_analysis_team_goals_time_analysis)[i]
                     contentList.add(contentSubList)
                 }
                 uiList.add(addTitle(title))
@@ -348,17 +352,10 @@ class FootballAnalysisFragment : Fragment() {
                     if(i == 0){
                         continue
                     }
-                    contentSubList.add(resources.getStringArray(R.array.header_analysis_team_goals_list_item)[i])
-
                     val seperated: List<String> = listItem.toString().replace("[", "").replace("]","")
                         .split("^",",")
-                    contentSubList.add(seperated[1])
-                    contentSubList.add(seperated[2])
-                    contentSubList.add(seperated[3])
-                    contentSubList.add(seperated[4])
-                    contentSubList.add(seperated[5])
-                    contentSubList.add(seperated[6])
-                    contentSubList.add(seperated[7])
+                    contentSubList.addAll(seperated)
+                    contentSubList[0] = resources.getStringArray(R.array.header_analysis_team_goals_time_analysis)[i]
                     contentList.add(contentSubList)
                 }
                 uiList.add(addTitle(title))
@@ -385,27 +382,12 @@ class FootballAnalysisFragment : Fragment() {
                     val seperated: List<String> = listItem.toString().replace("[", "").replace("]","")
                         .split("^",",")
                     if(i == 0 || i == 1){
-                        contentSubList2.add((resources.getStringArray(R.array.header_analysis_team_half_time_summary)[i]))
-                        contentSubList2.add(seperated[1])
-                        contentSubList2.add(seperated[2])
-                        contentSubList2.add(seperated[3])
-                        contentSubList2.add(seperated[4])
-                        contentSubList2.add(seperated[5])
-                        contentSubList2.add(seperated[6])
-                        contentSubList2.add(seperated[7])
-                        contentSubList2.add(seperated[8])
-                        contentSubList2.add(seperated[9])
+                        contentSubList2.addAll(seperated)
+                        contentSubList2[0] = resources.getStringArray(R.array.header_analysis_team_goals_time_analysis)[i]
                         contentList2.add(contentSubList2)
                     }else{
-                        contentSubList.add(seperated[1])
-                        contentSubList.add(seperated[2])
-                        contentSubList.add(seperated[3])
-                        contentSubList.add(seperated[4])
-                        contentSubList.add(seperated[5])
-                        contentSubList.add(seperated[6])
-                        contentSubList.add(seperated[7])
-                        contentSubList.add(seperated[8])
-                        contentSubList.add(seperated[9])
+                        contentSubList.addAll(seperated)
+                        contentSubList[0] = resources.getStringArray(R.array.header_analysis_team_goals_time_analysis)[i]
                         contentList.add(contentSubList)}
                 }
                 uiList.add(addTitle(title))
@@ -435,27 +417,12 @@ class FootballAnalysisFragment : Fragment() {
                     val seperated: List<String> = listItem.toString().replace("[", "").replace("]","")
                         .split("^",",")
                     if(i == 0 || i == 1){
-                        contentSubList2.add((resources.getStringArray(R.array.header_analysis_team_half_time_summary)[i]))
-                        contentSubList2.add(seperated[1])
-                        contentSubList2.add(seperated[2])
-                        contentSubList2.add(seperated[3])
-                        contentSubList2.add(seperated[4])
-                        contentSubList2.add(seperated[5])
-                        contentSubList2.add(seperated[6])
-                        contentSubList2.add(seperated[7])
-                        contentSubList2.add(seperated[8])
-                        contentSubList2.add(seperated[9])
+                        contentSubList2.addAll(seperated)
+                        contentSubList2[0] = resources.getStringArray(R.array.header_analysis_team_goals_time_analysis)[i]
                         contentList2.add(contentSubList2)
                     }else{
-                        contentSubList.add(seperated[1])
-                        contentSubList.add(seperated[2])
-                        contentSubList.add(seperated[3])
-                        contentSubList.add(seperated[4])
-                        contentSubList.add(seperated[5])
-                        contentSubList.add(seperated[6])
-                        contentSubList.add(seperated[7])
-                        contentSubList.add(seperated[8])
-                        contentSubList.add(seperated[9])
+                        contentSubList.addAll(seperated)
+                        contentSubList[0] = resources.getStringArray(R.array.header_analysis_team_goals_time_analysis)[i]
                         contentList.add(contentSubList)}
                 }
                 uiList.add(addTitle(title))
@@ -483,19 +450,10 @@ class FootballAnalysisFragment : Fragment() {
                     if(i == 0){
                         continue
                     }
-                    contentSubList.add(resources.getStringArray(R.array.header_analysis_team_goals_time_analysis)[i])
-
                     val seperated: List<String> = listItem.toString().replace("[", "").replace("]","")
                         .split("^",",")
-                    contentSubList.add(seperated[1])
-                    contentSubList.add(seperated[2])
-                    contentSubList.add(seperated[3])
-                    contentSubList.add(seperated[4])
-                    contentSubList.add(seperated[5])
-                    contentSubList.add(seperated[6])
-                    contentSubList.add(seperated[7])
-                    contentSubList.add(seperated[8])
-                    contentSubList.add(seperated[9])
+                    contentSubList.addAll(seperated)
+                    contentSubList[0] = resources.getStringArray(R.array.header_analysis_team_goals_time_analysis)[i]
                     contentList.add(contentSubList)
                 }
                 uiList.add(addTitle(title))
@@ -520,19 +478,12 @@ class FootballAnalysisFragment : Fragment() {
                     if(i == 0){
                         continue
                     }
-                    contentSubList.add(resources.getStringArray(R.array.header_analysis_team_goals_time_analysis)[i])
-
                     val seperated: List<String> = listItem.toString().replace("[", "").replace("]","")
                         .split("^",",")
-                    contentSubList.add(seperated[1])
-                    contentSubList.add(seperated[2])
-                    contentSubList.add(seperated[3])
-                    contentSubList.add(seperated[4])
-                    contentSubList.add(seperated[5])
-                    contentSubList.add(seperated[6])
-                    contentSubList.add(seperated[7])
-                    contentSubList.add(seperated[8])
-                    contentSubList.add(seperated[9])
+
+                    contentSubList.addAll(seperated)
+                    contentSubList[0] = resources.getStringArray(R.array.header_analysis_team_goals_time_analysis)[i]
+
                     contentList.add(contentSubList)
                 }
                 uiList.add(addTitle(title))
@@ -548,6 +499,44 @@ class FootballAnalysisFragment : Fragment() {
         }
     }
 
+    private fun filterRefereeToView(referee: Referee){
+        val imageDetailView = CommonVhItemImageDetailBinding.inflate(LayoutInflater.from(context))
+        Glide.with(imageDetailView.root)
+            .load(referee.photo)
+            .placeholder(R.drawable.ic_basketball_default)
+            .into(imageDetailView.ivCommonVhItem)
+        for(i in resources.getStringArray(R.array.header_analysis_referee_detail).indices){
+
+            val title = resources.getStringArray(R.array.header_analysis_referee_detail)[i]
+
+            var linearLayout = LinearLayout(context)
+
+            var tvtitle = TextView(context)
+            tvtitle.text = title +  ":"
+            var linearLayoutParams = LinearLayout.LayoutParams(
+                0, LinearLayout.LayoutParams.MATCH_PARENT
+            );
+            linearLayoutParams.weight = 2F
+            tvtitle.layoutParams = linearLayoutParams
+            tvtitle.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+            tvtitle.textSize = 14F
+            linearLayout.addView(tvtitle)
+
+            var tvContent = TextView(context)
+            tvContent.text = " " + mapping(referee, i)
+            var linearLayoutParamsTvContent = LinearLayout.LayoutParams(
+                0, LinearLayout.LayoutParams.MATCH_PARENT
+            );
+            linearLayoutParamsTvContent.weight = 3F
+            tvContent.layoutParams = linearLayoutParamsTvContent
+            tvContent.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            tvtitle.textSize = 14F
+            linearLayout.addView(tvContent)
+
+            imageDetailView.lyCommonVhItem.addView(linearLayout)
+        }
+        binding.layoutLinearAnalysisMainList.addView(imageDetailView.root)
+    }
     private fun addTitle(title: String) : LinearLayout{
         var linearLayout = LinearLayout(context)
         linearLayout.layoutParams = LinearLayout.LayoutParams(
@@ -614,5 +603,15 @@ class FootballAnalysisFragment : Fragment() {
             linearLayout.addView(tvHeader)
         }
         return linearLayout
+    }
+
+    private fun mapping(referee: Referee, index : Int) : String{
+        when(index){
+            0 -> return resources.getStringArray(R.array.analysis_referee_type)[referee.typeId.toInt()-1]
+            1 -> return referee.nameEn
+            2 -> return referee.birthday
+            3 -> return referee.countryEn
+        }
+        return ""
     }
 }

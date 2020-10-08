@@ -16,7 +16,6 @@ class FootballAnalysisViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel(){
     var footballAnalysisList = MutableLiveData<Resource<FootballAnalysisModel>>()
-//    var viewHolderModel : MutableMap<String, List<String>> = mutableMapOf()
     private val matchId = savedStateHandle.get<String>("matchId")
     val homeName = savedStateHandle.get<String>("homeName")
     val awayName = savedStateHandle.get<String>("awayName")

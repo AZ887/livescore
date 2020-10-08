@@ -50,6 +50,7 @@
     <string name="analysis_goals">Distribution Of Goals In The First And Second Half</string>
     <string name="analysis_halftime">Halftime/Fulltime/Win/Draw/Lose</string>
     <string name="analysis_time_statistics">Time Statistics</string>
+    <string name="analysis_referee_information">Referee Information</string>
 
     <string-array name="header_analysis_headToHead">
         <item>Match</item>
@@ -146,16 +147,29 @@
     </string-array>
 
     <string-array name="header_analysis_team_half_time_summary">
-        <item>HalfTime</item>
-        <item>FullTime</item>
+        <item>Half Time</item>
+        <item>Full Time</item>
     </string-array>
 
     <string-array name="header_analysis_team_half_time_wdl">
-        <item>HalfTime</item>
-        <item>FullTime</item>
+        <item>Half Time</item>
+        <item>Full Time</item>
         <item>T</item>
         <item>H</item>
         <item>A</item>
+    </string-array>
+
+    <string-array name="header_analysis_referee_detail">
+        <item>Position</item>
+        <item>Name</item>
+        <item>DOB</item>
+        <item>Nationality</item>+
+    </string-array>
+
+    <string-array name="analysis_referee_type">
+        <item>Referee</item>
+        <item>Assistant Referee</item>
+        <item>Fourth Official</item>
     </string-array>
 
     //football team information
