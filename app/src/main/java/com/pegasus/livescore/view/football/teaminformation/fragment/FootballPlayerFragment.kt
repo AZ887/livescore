@@ -7,15 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.pegasus.livescore.R
-import com.pegasus.livescore.database.entitymodel.football.TeamInfo
 import com.pegasus.livescore.database.entitymodel.football.TeamPlayer
 import com.pegasus.livescore.databinding.CommonVhItemImageDetailBinding
 import com.pegasus.livescore.databinding.FootballPlayerFragmentBinding
 import com.pegasus.livescore.util.autoCleared
-import com.pegasus.livescore.view.football.teaminformation.viewmodel.FootballTeamInformationViewModel
 
 class FootballPlayerFragment(private val teamPlayerData: List<TeamPlayer>) : Fragment() {
     private var binding : FootballPlayerFragmentBinding by autoCleared()
@@ -36,11 +33,11 @@ class FootballPlayerFragment(private val teamPlayerData: List<TeamPlayer>) : Fra
 
     private fun setupUI() {
         for(teamPlayer in teamPlayerData) {
-            val testview = CommonVhItemImageDetailBinding.inflate(LayoutInflater.from(context))
-            Glide.with(testview.root)
+            val imageDetailView = CommonVhItemImageDetailBinding.inflate(LayoutInflater.from(context))
+            Glide.with(imageDetailView.root)
                 .load(teamPlayer.photo)
                 .placeholder(R.drawable.ic_basketball_default)
-                .into(testview.ivCommonVhItem)
+                .into(imageDetailView.ivCommonVhItem)
             for(i in resources.getStringArray(R.array.header_team_player_detail).indices){
 
                 val title = resources.getStringArray(R.array.header_team_player_detail)[i]
@@ -67,9 +64,9 @@ class FootballPlayerFragment(private val teamPlayerData: List<TeamPlayer>) : Fra
                 tvContent.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
                 linearLayout.addView(tvContent)
 
-                testview.lyCommonVhItem.addView(linearLayout)
+                imageDetailView.lyCommonVhItem.addView(linearLayout)
             }
-            binding.lyFootballTeam.addView(testview.root)
+            binding.lyFootballTeam.addView(imageDetailView.root)
         }
     }
 

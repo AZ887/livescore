@@ -35,11 +35,11 @@ class FootballTeamFragment(private val teamInfoData: List<TeamInfo>) : Fragment(
 
     private fun setupUI(){
         for(teamInfo in teamInfoData) {
-            val testview = CommonVhItemImageDetailBinding.inflate(LayoutInflater.from(context))
-            Glide.with(testview.root)
+            val imageDetailView = CommonVhItemImageDetailBinding.inflate(LayoutInflater.from(context))
+            Glide.with(imageDetailView.root)
                 .load(teamInfo.logo)
                 .placeholder(R.drawable.ic_basketball_default)
-                .into(testview.ivCommonVhItem)
+                .into(imageDetailView.ivCommonVhItem)
             for(i in resources.getStringArray(R.array.header_team_information_detail).indices){
 
                 val title = resources.getStringArray(R.array.header_team_information_detail)[i]
@@ -68,9 +68,9 @@ class FootballTeamFragment(private val teamInfoData: List<TeamInfo>) : Fragment(
                 tvtitle.textSize = 14F
                 linearLayout.addView(tvContent)
 
-                testview.lyCommonVhItem.addView(linearLayout)
+                imageDetailView.lyCommonVhItem.addView(linearLayout)
             }
-            binding.lyFootballTeam.addView(testview.root)
+            binding.lyFootballTeam.addView(imageDetailView.root)
         }
     }
 

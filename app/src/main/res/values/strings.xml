@@ -32,6 +32,15 @@
     <string name="common_total_t">T</string>
     <string name="common_home_h">H</string>
     <string name="common_away_a">A</string>
+    
+    //live
+    <string name="live_button_briefing_text">briefing</string>
+    <string name="live_button_analysis_text">Analysis</string>
+    <string name="live_button_league_text">League</string>
+    <string name="live_button_lineup_text">Line Up</string>
+    <string name="live_button_event_text">Event</string>
+    <string name="live_button_textlive_text">Text</string>
+    <string name="live_button_player_detail_text">Stat</string>
 
     //analysis
     <string name="analysis_vs">VS</string>

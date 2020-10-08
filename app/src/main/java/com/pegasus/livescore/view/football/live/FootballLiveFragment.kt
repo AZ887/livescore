@@ -1,8 +1,6 @@
 package com.pegasus.livescore.view.football.live
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +17,6 @@ import com.pegasus.livescore.util.Resource
 import com.pegasus.livescore.util.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.*
-import okio.ByteString
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -28,9 +25,11 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
     private var binding: FragmentFootballLiveBinding by autoCleared()
     private val viewModel: FootballLiveViewModel by viewModels()
     private lateinit var adapter: FootballLiveAdapter
+
     companion object {
         fun newInstance() = FootballLiveFragment()
     }
+
     @Inject
     lateinit var okHttpClient: OkHttpClient
 
@@ -75,20 +74,31 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
         })
     }
 
-    override fun onClickViewHolder(v:Int,item: FootballMatch) {
-//        when(v){
-//            R.id.tv_test_button ->{
-//                val action = FootballLiveFragmentDirections.actionNavFootballLiveToFootballAnalysisFragment(
-//                    item.matchId.toString(), item.homeNameEn, item.awayNameEn)
-//                findNavController().navigate(action)
-        val action = FootballLiveFragmentDirections.actionNavFootballLiveToNavFootballTeamInformation(
-            item.homeId.toString())
-        findNavController().navigate(action)
-//            }
-//        }
-//        findNavController().navigate(
-//            R.id.nav_basketball_history
-//            bundleOf("id" to characterId)
-//        )
+    override fun onClickViewHolder(action: String, item: FootballMatch) {
+        when (action) {
+            "homeTeam" -> {
+                val action =
+                    FootballLiveFragmentDirections.actionNavFootballLiveToNavFootballTeamInformation(
+                        item.homeId.toString()
+                    )
+                findNavController().navigate(action)
+            }
+            "awayTeam" -> {
+                val action =
+                    FootballLiveFragmentDirections.actionNavFootballLiveToNavFootballTeamInformation(
+                        item.awayId.toString()
+                    )
+                findNavController().navigate(action)
+            }
+            resources.getString(R.string.live_button_analysis_text) -> {
+                val action =
+                    FootballLiveFragmentDirections.actionNavFootballLiveToFootballAnalysisFragment(
+                        item.matchId.toString(),
+                        item.homeNameEn,
+                        item.awayNameEn
+                    )
+                findNavController().navigate(action)
+            }
+        }
     }
 }

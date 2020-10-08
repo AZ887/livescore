@@ -44,7 +44,8 @@ class FootballTeamInformationFragment : Fragment() {
 
     private fun setupUI(data: FootballTeamInformationModel) {
         binding.vpTeamInformationFragment.adapter = FootballTeamInformationAdapter(this, data);
-
+        binding.tablTeamInformationFragment.tabMode = TabLayout.MODE_AUTO
+        binding.tablTeamInformationFragment.tabGravity = TabLayout.GRAVITY_CENTER
         TabLayoutMediator(
             binding.tablTeamInformationFragment, binding.vpTeamInformationFragment
         ) { tab: TabLayout.Tab, position: Int ->
