@@ -43,7 +43,8 @@
             app:destination="@id/nav_football_analysis">
             <argument
                 android:name="matchId"
-                app:argType="string" />
+                app:argType="string"
+                android:defaultValue="0"/>
             <argument
                 android:name="homeName"
                 app:argType="string" />
@@ -56,30 +57,34 @@
             app:destination="@id/nav_football_team_information">
             <argument
                 android:name="teamId"
-                app:argType="string" />
+                app:argType="string"
+                android:defaultValue="0"/>
         </action>
         <action
             android:id="@+id/action_nav_football_live_to_nav_football_league"
             app:destination="@id/nav_football_league">
             <argument
                 android:name="leagueId"
-                app:argType="string" />
+                app:argType="string"
+                android:defaultValue="0"/>
             <argument
                 android:name="subLeagueId"
-                app:argType="string" />
+                app:argType="string"
+                android:defaultValue="0"/>
             <argument
                 android:name="groupId"
-                app:argType="string" />
+                app:argType="string"
+                android:defaultValue="0"/>
         </action>
         <action
             android:id="@+id/action_nav_football_live_to_nav_football_event"
             app:destination="@id/nav_football_event">
-            <argument
-                android:name="eventModel"
-                app:argType="com.pegasus.livescore.database.entitymodel.football.FootballEvent" />
-            <argument
-                android:name="eventTechnic"
-                app:argType="com.pegasus.livescore.database.entitymodel.football.FootballTechnic" />
+<!--            <argument-->
+<!--                android:name="eventModel"-->
+<!--                app:argType="com.pegasus.livescore.database.entitymodel.football.FootballEvent" />-->
+<!--            <argument-->
+<!--                android:name="eventTechnic"-->
+<!--                app:argType="com.pegasus.livescore.database.entitymodel.football.FootballTechnic" />-->
 
         </action>
     </fragment>

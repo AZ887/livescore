@@ -1,18 +1,16 @@
 package com.pegasus.livescore.database.entitymodel.football
 
 import kotlinx.serialization.*
-import kotlinx.serialization.json.*
-import kotlinx.serialization.internal.*
 
 @Serializable
 data class FootballLeagueModel (
     val leagueData01: List<LeagueData01>,
     val leagueData02: List<LeagueData02>,
-    val leagueData03: JsonArray,
+    val leagueData03: List<LeagueData03>,
     val leagueData04: List<LeagueData04>,
     val leagueStanding: List<LeagueStanding>,
-    val leagueTopscorer: List<League>,
-    val leaguePlayercount: League
+    val leagueTopscorer: List<LeagueTopscorer>,
+    val leaguePlayercount: LeaguePlayercount
 )
 
 @Serializable
@@ -30,12 +28,8 @@ data class LeagueData01 (
     val nameCht: String,
     val nameChtShort: String,
     val type: String,
-    val subSclassEn: String,
-
-    val subSclassCn: String,
-
-    val sumRound: String,
-    val currRound: String,
+    val sumRound: String? = "0",
+    val currRound: String? = "0",
     val currSeason: String,
 
     val countryId: String,
@@ -81,26 +75,107 @@ data class LeagueData02 (
     val isCurrentSub: Boolean,
     val currentSeason: String,
     val isTwoRounds: Boolean,
-
     val subNameId: String
 )
 
 @Serializable
+data class LeagueData03 (
+    val leagueId: Long,
+
+    val season: String,
+
+    val groupId: Long,
+
+    val roundTypeEn: String,
+    val roundTypeChs: String,
+
+    val roundTypeCht: String,
+    val isGroup: Boolean,
+    val groupNum: Any? = null,
+    val isCurrGroup: Boolean,
+    val numberSort: Long,
+    val lineCount: Any? = null,
+    val isTwoRounds: Boolean,
+    val roundTypeId: String
+)
+
+@Serializable
 data class LeagueData04 (
+    val leagueId: Long,
+
+    val rule: String,
+
+    val ruleCn: String,
+
     val ruleEn: String,
 
     val ruleId: String
 )
 
 @Serializable
-data class League (
-    val list: JsonArray? = null
+data class LeaguePlayercount (
+    val list: Map<String, ListValue>
+)
+
+@Serializable
+data class ListValue (
+    val playerId: Long,
+
+    val teamId: Long,
+
+    val isHome: Boolean,
+
+    val leagueId: Long,
+
+    val season: String,
+    val appearanceNum: Long,
+    val substituteNum: Long,
+    val playingTime: Long,
+    val goals: Long,
+    val penaltyGoals: Long,
+    val shots: Long,
+    val shotsTarget: Long,
+    val wasFouled: Long,
+    val offsides: Long,
+    val bestSum: Long,
+    val rating: Double,
+    val totalPass: Long,
+    val passSuc: Long,
+    val keyPass: Long,
+    val assist: Long,
+    val longBall: Long,
+    val longBallsSuc: Long,
+    val throughBall: Long,
+    val throughBallSuc: Long,
+    val dribblesSuc: Long,
+    val crossNum: Long,
+    val crossSuc: Long,
+    val tackles: Long,
+    val interception: Long,
+    val clearance: Long,
+    val dispossessed: Long,
+    val shotsBlocked: Long,
+    val aerialSuc: Long,
+    val fouls: Long,
+    val red: Long,
+    val yellow: Long,
+    val turnover: Long,
+    val modifyTime: String,
+    val teamName: String,
+
+    val teamNameChs: String,
+
+    val teamNameEn: String,
+    val playerName: String,
+
+    val playerNameChs: String,
+
+    val playerNameEn: String
 )
 
 @Serializable
 data class LeagueStanding (
     val leagueInfo: LeagueInfo,
-    val subLeagueInfo: List<SubLeagueInfo>,
     val teamInfo: List<LeagueTeamInfo>,
     val totalStandings: List<TotalStanding>,
     val halfStandings: List<Standing>,
@@ -108,7 +183,7 @@ data class LeagueStanding (
     val awayStandings: List<Standing>,
     val homeHalfStandings: List<Standing>,
     val awayHalfStandings: List<Standing>,
-    val leagueColorInfos: JsonArray,
+    val leagueColorInfos: List<LeagueColorInfo>,
     val isConference: Boolean,
     val lastUpdateTime: String,
     val scoreCountType: Long
@@ -136,7 +211,20 @@ data class Standing (
 )
 
 @Serializable
+data class LeagueColorInfo (
+    val color: String,
+    val leagueNameEn: String,
+
+    val leagueNameChs: String,
+
+    val leagueNameCht: String
+)
+
+@Serializable
 data class LeagueInfo (
+    val countRound: Long,
+    val currRound: Long,
+
     val leagueId: Long,
 
     val nameEn: String,
@@ -155,33 +243,15 @@ data class LeagueInfo (
 )
 
 @Serializable
-data class SubLeagueInfo (
-    val subId: Long,
-
-    val nameEn: String,
-
-    val nameChs: String,
-
-    val nameCht: String,
-    val hasStandings: Boolean,
-    val countRound: Long,
-    val currRound: Long,
-    val isTwoRounds: Boolean,
-    val isPrimary: Boolean
-)
-
-@Serializable
 data class LeagueTeamInfo (
     val flag: String,
     val conferenceFlg: Long,
 
-    @SerialName("teamId")
-    val teamID: Long,
+    val teamId: Long,
 
     val nameEn: String,
 
-    @SerialName("nameChs")
-    val nameCHS: String,
+    val nameChs: String,
 
     val nameCht: String
 )
@@ -190,8 +260,7 @@ data class LeagueTeamInfo (
 data class TotalStanding (
     val rank: Long,
 
-    @SerialName("teamId")
-    val teamID: Long,
+    val teamId: Long,
 
     val winRate: String,
     val drawRate: String,
@@ -220,4 +289,35 @@ data class TotalStanding (
     val goalDifference: Long,
     val integral: Long,
     val totalAddScore: Long
+)
+
+@Serializable
+data class LeagueTopscorer (
+    val list: List<TopScorerList>
+)
+
+@Serializable
+data class TopScorerList (
+    val playerId: Long,
+
+    val playerNameEn: String,
+
+    val playerNameChs: String,
+
+    val playerNameCht: String,
+    val countryEn: String,
+
+    val countryCn: String,
+
+    val teamID: Long,
+    val teamNameEn: String,
+
+    val teamNameChs: String,
+
+    val teamNameCht: String,
+    val goals: Long,
+    val homeGoals: Long,
+    val awayGoals: Long,
+    val homePenalty: Long,
+    val awayPenalty: Long
 )

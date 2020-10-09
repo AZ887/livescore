@@ -11,4 +11,6 @@ class FootballDataSource @Inject constructor(
     suspend fun getFootballAnalysis(matchId:String) = getResult { footballService.getFootballAnalysis(matchId) }
     suspend fun getFootballTeamInformation(teamId:String) = getResult { footballService.getFootballTeamInformation(teamId) }
     suspend fun getFootballEvent() = getResult { footballService.getFootballEvent() }
+    suspend fun getFootballLeague(leagueId:String,subLeagueId:String,groupId:String)
+            = getResult { footballService.getFootballLeague(leagueId, subLeagueId, groupId) }
 }

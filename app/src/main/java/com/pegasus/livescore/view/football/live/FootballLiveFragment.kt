@@ -60,7 +60,7 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
     }
 
     private fun setupObservers() {
-        viewModel.footballLiveList.observe(viewLifecycleOwner, Observer {
+        viewModel.footballLiveList.observe(viewLifecycleOwner,  {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
 //                    binding.progressBar.visibility = View.GONE
@@ -129,9 +129,9 @@ class FootballLiveFragment : Fragment(), FootballLiveAdapter.FootballLiveItemLis
             resources.getString(R.string.live_button_league_text) -> {
                 val action =
                     FootballLiveFragmentDirections.actionNavFootballLiveToNavFootballLeague(
-                        item.leagueId.toString(),
-                        item.subLeagueId,
-                        item.groupId.toString()
+                        if(item.leagueId == null) "0" else item.leagueId.toString(),
+                        if(item.subLeagueId == "") "0" else item.subLeagueId,
+                        if(item.groupId == null) "0" else item.groupId.toString()
                     )
                 findNavController().navigate(action)
             }

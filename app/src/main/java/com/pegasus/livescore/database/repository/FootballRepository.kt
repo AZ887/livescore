@@ -22,4 +22,8 @@ class FootballRepository @Inject constructor(
     suspend fun getFootballEvent() = performGetOperation (
         networkCall = {remoteDataSource.getFootballEvent()}
     )
+
+    suspend fun getFootballLeague(leagueId:String,subLeagueId:String,groupId:String) = performGetOperation (
+        networkCall = {remoteDataSource.getFootballLeague(leagueId, subLeagueId, groupId)}
+    )
 }

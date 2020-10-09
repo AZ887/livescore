@@ -217,4 +217,24 @@
         <item>Season</item>
         <item>Type</item>
     </string-array>
+
+    //football league
+    <string-array name="header_tab_item_title_league">
+        <item>Information</item>
+        <item>Standings</item>
+        <item>Shooters List</item>
+        <item>League Player Technical Statistics</item>
+    </string-array>
+
+    <string-array name="header_league_information_detail">
+        <item>Full Name</item>
+        <item>Abbreviation</item>
+        <item>Type</item>
+        <item>Current Sub League</item>
+        <item>Total Rounds</item>
+        <item>Current Round</item>
+        <item>Current Season</item>
+        <item>Country</item>
+<!--        <item>Regional League </item>-->
+    </string-array>
 </resources>

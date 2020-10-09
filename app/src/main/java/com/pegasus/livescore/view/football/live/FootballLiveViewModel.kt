@@ -27,7 +27,7 @@ class FootballLiveViewModel @ViewModelInject constructor(
 init {
     viewModelScope.launch {
         footballLiveList.value = repository.getFootballScore()
-        footballEventList.value = repository.getFootballEvent()
+//        footballEventList.value = repository.getFootballEvent()
         initSocket()
     }
 }
