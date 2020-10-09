@@ -48,8 +48,8 @@ class FootballLiveViewHolder(private val itemBinding: FootballLiveViewholderBind
         itemBinding.layoutLeftTeamDetail.root.tag = "homeTeam"
         itemBinding.layoutLeftTeamDetail.root.setOnClickListener(this)
 
-        itemBinding.layoutMatchLiveStatus.tvMatchCurrentStatus.text = "FT"
-        itemBinding.layoutMatchLiveStatus.tvMatchLatestScore.text = "90"
+        itemBinding.layoutMatchLiveStatus.tvMatchCurrentStatus.text = "Soon"
+        itemBinding.layoutMatchLiveStatus.tvMatchLatestScore.text = "-"
         itemBinding.layoutMatchLiveStatus.tvMatchOdd1.text = "0.99"
         itemBinding.layoutMatchLiveStatus.tvMatchOdd2.text = "0.99"
         itemBinding.layoutMatchLiveStatus.tvMatchOdd3.text = "0.99"
@@ -111,7 +111,7 @@ class FootballLiveViewHolder(private val itemBinding: FootballLiveViewholderBind
             ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
         );
 
-        linearLayoutParams.setMargins(20,20,20,20)
+        linearLayoutParams.setMargins(20,20,20,40)
         button.layoutParams = linearLayoutParams
         button.setPadding(40,20,40,20)
         button.setLines(1)

@@ -12,4 +12,5 @@
     <color name="color_common_list_border">#dee2e6</color>
     <color name="color_sport_detail_button">#3490dc</color>
     <color name="color_transparent">#80ffffff</color>
+    <color name="color_text_odd">#880000</color>
 </resources>
