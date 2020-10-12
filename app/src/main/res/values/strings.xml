@@ -11,10 +11,12 @@
     <string name="menu_live">Live</string>
     <string name="menu_history">History</string>
 
-    <string name="menu_soccer">Soccer</string>
+    <string name="menu_football">Football</string>
     <string name="menu_basket_ball">Basketball</string>
     <string name="menu_latest_news">latest news</string>
-    <string name="menu_analysis">analysis</string>
+    <string name="menu_analysis">Analysis</string>
+    <string name="menu_team_information">Team Information</string>
+    <string name="menu_league">League</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

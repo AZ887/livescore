@@ -57,6 +57,7 @@ class FootballTransferRecordFragment(val teamPlayerTransferData: List<TeamPlayer
                     linearLayoutParams.weight = 2F
                     tvtitle.layoutParams = linearLayoutParams
                     tvtitle.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+                    tvtitle.textSize = 14F
                     linearLayout.addView(tvtitle)
 
                     var tvContent = TextView(context)
@@ -67,6 +68,7 @@ class FootballTransferRecordFragment(val teamPlayerTransferData: List<TeamPlayer
                     linearLayoutParamsTvContent.weight = 3F
                     tvContent.layoutParams = linearLayoutParamsTvContent
                     tvContent.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                    tvtitle.textSize = 14F
                     linearLayout.addView(tvContent)
 
                     imageDetailView.lyCommonVhItem.addView(linearLayout)

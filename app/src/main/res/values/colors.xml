@@ -13,4 +13,5 @@
     <color name="color_sport_detail_button">#3490dc</color>
     <color name="color_transparent">#80ffffff</color>
     <color name="color_text_odd">#880000</color>
+    <color name="color_profile_background">#dee2e6</color>
 </resources>

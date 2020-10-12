@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 import com.pegasus.livescore.R
 import com.pegasus.livescore.database.entitymodel.football.TeamPlayer
@@ -40,6 +41,13 @@ class FootballPlayerFragment(private val teamPlayerData: List<TeamPlayer>) : Fra
 
         for(teamPlayer in teamPlayerData) {
             val imageDetailView = CommonVhItemImageDetailBinding.inflate(LayoutInflater.from(context))
+            if(teamPlayerData.indexOf(teamPlayer) %2 == 1){
+                imageDetailView.root.background = ResourcesCompat.getDrawable(
+                    resources,
+                    R.color.color_profile_background,
+                    null
+                )
+            }
             Glide.with(imageDetailView.root)
                 .load(teamPlayer.photo)
                 .placeholder(R.drawable.ic_empty_profile)
@@ -58,6 +66,7 @@ class FootballPlayerFragment(private val teamPlayerData: List<TeamPlayer>) : Fra
                 linearLayoutParams.weight = 2F
                 tvtitle.layoutParams = linearLayoutParams
                 tvtitle.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+                tvtitle.textSize = 14F
                 linearLayout.addView(tvtitle)
 
                 var tvContent = TextView(context)
@@ -68,6 +77,7 @@ class FootballPlayerFragment(private val teamPlayerData: List<TeamPlayer>) : Fra
                 linearLayoutParamsTvContent.weight = 3F
                 tvContent.layoutParams = linearLayoutParamsTvContent
                 tvContent.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                tvContent.textSize = 14F
                 linearLayout.addView(tvContent)
 
                 imageDetailView.lyCommonVhItem.addView(linearLayout)

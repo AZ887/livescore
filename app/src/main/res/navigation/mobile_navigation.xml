@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/nav_football_history"
         android:name="com.pegasus.livescore.view.football.score.FootballHistoryFragment"
-        android:label="@string/menu_soccer"
+        android:label="@string/menu_football"
         tools:layout="@layout/fragment_football_history" />
     <fragment
         android:id="@+id/nav_basketball_history"
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/nav_football_live"
         android:name="com.pegasus.livescore.view.football.live.FootballLiveFragment"
-        android:label="@string/menu_soccer"
+        android:label="@string/menu_football"
         tools:layout="@layout/fragment_football_live">
 
         <action
@@ -102,12 +102,12 @@
     <fragment
         android:id="@+id/nav_football_team_information"
         android:name="com.pegasus.livescore.view.football.teaminformation.fragment.FootballTeamInformationFragment"
-        android:label="@string/menu_analysis"
+        android:label="@string/menu_team_information"
         tools:layout="@layout/fragment_football_analysis" />
     <fragment
         android:id="@+id/nav_football_league"
         android:name="com.pegasus.livescore.view.football.league.FootballLeagueFragment"
-        android:label="@string/menu_analysis"
+        android:label="@string/menu_league"
         tools:layout="@layout/football_league_fragment" />
     <fragment
         android:id="@+id/nav_football_event"

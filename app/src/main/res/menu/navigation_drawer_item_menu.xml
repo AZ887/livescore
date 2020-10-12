@@ -6,8 +6,8 @@
 
         <item
             android:id="@+id/nav_football"
-            android:icon="@drawable/ic_soccer"
-            android:title="@string/menu_soccer" />
+            android:icon="@drawable/ic_football"
+            android:title="@string/menu_football" />
         <item
             android:id="@+id/nav_basketball"
             android:icon="@drawable/ic_basketball"

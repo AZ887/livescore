@@ -8,9 +8,10 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabl_team_information_fragment"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#00a294"
+        android:background="@color/colorAccent"
+        app:tabBackground="@drawable/tab_color_selector"
         app:tabTextColor="@android:color/background_light"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
